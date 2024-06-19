@@ -4,13 +4,7 @@ import MainPage from "./Pages/MainPage";
 const App = () => {
   return (
     <>
-      <Flex
-        w="100vw"
-        h="100vh"
-        bgColor="#C9BCDE"
-        align="center"
-        justifyContent="center"
-      >
+      <Flex w="100vw" h="100vh" bgColor="#C9BCDE">
         <MainPage />
       </Flex>
     </>
