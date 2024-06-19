@@ -1,40 +1,19 @@
 import { Flex, Text } from "@chakra-ui/react";
-import SideBar from "../components/SideBar";
 
 const MainPage = () => {
   return (
-    <Flex alignItems="center" justifyContent="center" p="1vw">
+    <Flex alignItems="center" justifyContent="center">
       <Flex
-        bgColor="green.100"
-        w="24vw"
+        bgColor="green.400"
+        textColor="white"
+        w="20vw"
         h="89vh"
         alignItems="center"
         justifyContent="center"
-        borderRadius="5px"
-        overflowY="auto"
-        direction="row"
       >
-        <Flex
-          bgColor="green.900"
-          textColor="white"
-          w="4vw"
-          h="89vh"
-          justifyContent="center"
-          borderRadius="5px"
-        >
-          <SideBar />
-        </Flex>
-        <Flex
-          bgColor="green.400"
-          textColor="white"
-          w="20vw"
-          h="89vh"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Text>This is a list area</Text>
-        </Flex>
+        <Text>This is a list area</Text>
       </Flex>
+
       <Flex
         bgColor="green.700"
         w="74vw"
