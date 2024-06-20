@@ -1,10 +1,10 @@
 import { MdOutlineChat } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { FaPenFancy } from "react-icons/fa";
-import { Flex, Spacer } from "@chakra-ui/react";
+import { Flex, Icon, Spacer, Link } from "@chakra-ui/react";
 import { BsClockHistory } from "react-icons/bs";
-import { IoSettingsOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { Link as RouterLink } from "react-router-dom";
 
 const SideBar = () => {
   return (
@@ -23,17 +23,87 @@ const SideBar = () => {
         ml="1vw"
       >
         <Flex direction="column" mt="5px" gap="20px">
-          <MdOutlineChat size="28px" name="Chats" title="Chats" />
-          <BsClockHistory size="28px" name="Story" title="Story" />
-          <IoIosPeople size="28px" name="Channel" title="Channel" />
-          <FaPenFancy size="28px" name="Write" title="Write" />
+          {/* CHATS */}
+          <Link as={RouterLink} to="/">
+            <Icon
+              as={MdOutlineChat}
+              w="30px"
+              h="30px"
+              name="Chats"
+              title="Chats"
+              _hover={{
+                color: "grey",
+                transform: "scale(1.1)",
+                transition: "transform 0.2s, color 0.2s",
+                
+              }}
+            />
+          </Link>
+          {/* STORY */}
+          <Link as={RouterLink} to="/story">
+            <Icon
+              as={BsClockHistory}
+              w="30px"
+              h="30px"
+              name="Story"
+              title="Story"
+              _hover={{
+                color: "grey",
+                transform: "scale(1.1)",
+                transition: "transform 0.2s, color 0.2s",
+              }}
+            />
+          </Link>
+          {/* CHANNEL */}
+          <Link as={RouterLink} to="/channel">
+            <Icon
+              as={IoIosPeople}
+              w="30px"
+              h="30px"
+              name="Channel"
+              title="Channel"
+              _hover={{
+                color: "grey",
+                transform: "scale(1.1)",
+                transition: "transform 0.2s, color 0.2s",
+              }}
+            />
+          </Link>
+          {/* WRITE */}
+          <Link as={RouterLink} to="/write">
+            <Icon
+              as={FaPenFancy}
+              w="30px"
+              h="30px"
+              name="Write"
+              title="Write"
+              _hover={{
+                color: "grey",
+                transform: "scale(1.1)",
+                transition: "transform 0.2s, color 0.2s",
+              }}
+            />
+          </Link>
         </Flex>
 
         <Spacer />
 
+        {/* PROFILE ICON */}
         <Flex direction="column" gap="20px" alignItems="end">
-          <IoSettingsOutline size="28px" name="Settings" title="Settings" />
-          <CgProfile size="28px" name="Profile" title="Profile" />
+          <Link as={RouterLink} to="/profile">
+            <Icon
+              as={CgProfile}
+              w="30px"
+              h="30px"
+              name="Profile"
+              title="Profile"
+              _hover={{
+                color: "grey",
+                transform: "scale(1.1)",
+                transition: "transform 0.2s, color 0.2s",
+              }}
+            />
+          </Link>
         </Flex>
       </Flex>
     </>
