@@ -1,3 +1,4 @@
+import { TfiSaveAlt } from "react-icons/tfi";
 import { MdOutlineChat } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { FaPenFancy } from "react-icons/fa";
@@ -35,7 +36,6 @@ const SideBar = () => {
                 color: "grey",
                 transform: "scale(1.1)",
                 transition: "transform 0.2s, color 0.2s",
-                
               }}
             />
           </Link>
@@ -85,6 +85,21 @@ const SideBar = () => {
             />
           </Link>
         </Flex>
+        {/* SAVED MESSAGES */}
+        <Link as={RouterLink} to="/savedMessage">
+          <Icon
+            as={TfiSaveAlt}
+            w={{ base: "20px", md: "25px", lg: "30px" }}
+            h={{ base: "20px", md: "25px", lg: "30px" }}
+            name="savedMessage"
+            title="savedMessage"
+            _hover={{
+              color: "grey",
+              transform: "scale(1.1)",
+              transition: "transform 0.2s, color 0.2s",
+            }}
+          />
+        </Link>
 
         <Spacer />
 
