@@ -1,4 +1,5 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Spacer, Text } from "@chakra-ui/react";
+import Header from "../components/Header";
 
 const MainPage = () => {
   return (
@@ -10,7 +11,10 @@ const MainPage = () => {
         h="89vh"
         alignItems="center"
         justifyContent="center"
+        direction="column"
       >
+        <Header />
+        <Spacer />    
         <Text>This is a list area</Text>
       </Flex>
 
