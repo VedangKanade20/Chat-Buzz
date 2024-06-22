@@ -9,7 +9,7 @@ const Header = () => {
         w="20vw"
         h="10vh"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="top"
       >
         <Text>Chats</Text>
       </Flex>
