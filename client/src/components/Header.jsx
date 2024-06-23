@@ -4,16 +4,15 @@ const Header = () => {
   return (
     <Flex alignItems="center" justifyContent="start">
       <Flex
-        bgColor="blue.400"
+        bgColor="red.400"
         textColor="white"
         w="20vw"
         h="8vh"
         alignItems="center"
         justifyContent="top"
         textAlign="center"
-        p="3px"
       >
-        <Heading as="xl">CHATS:</Heading>
+        <Heading as="lg">Chat-Buzz</Heading>
       </Flex>
     </Flex>
   );

@@ -1,4 +1,4 @@
-import { Flex, Spacer, Box } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import AccountCard from "./AccountCard";
 import Header from "./Header";
 
