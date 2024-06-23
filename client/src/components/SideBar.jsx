@@ -18,7 +18,7 @@ const SideBar = () => {
         w="4vw"
         h="89vh"
         justifyContent="center"
-        borderRadius="5px"
+        borderRadius="10px"
         alignItems="center"
         p="1vw"
         ml="1vw"
