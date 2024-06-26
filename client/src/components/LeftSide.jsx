@@ -13,7 +13,7 @@ const LeftSide = () => {
       direction="column"
       borderRadius="10px"
       p="5px"
-      gap="30px"
+      gap="5px"
     >
       <Header />
       <Box gap="15px" overflowY="auto">
