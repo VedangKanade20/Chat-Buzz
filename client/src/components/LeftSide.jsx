@@ -1,5 +1,6 @@
 import { Flex, Box } from "@chakra-ui/react";
 import AccountCard from "./AccountCard";
+import users from "../../data/users";
 import Header from "./Header";
 
 const LeftSide = () => {
@@ -17,18 +18,9 @@ const LeftSide = () => {
     >
       <Header />
       <Box gap="15px" overflowY="auto">
-        <AccountCard />
-        <AccountCard />
-        <AccountCard />
-        <AccountCard />
-        <AccountCard />
-        <AccountCard />
-        <AccountCard />
-
-        <AccountCard />
-        <AccountCard />
-        <AccountCard />
-        <AccountCard />
+        {users.map((user) => (
+          <AccountCard key={user._id} user={user} />
+        ))}
       </Box>
     </Flex>
   );

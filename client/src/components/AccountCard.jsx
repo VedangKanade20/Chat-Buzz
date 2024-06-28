@@ -1,28 +1,8 @@
-// import { Flex } from "@chakra-ui/react";
-
-// const AccountCard = () => {
-//   return (
-//     <Flex
-//       bgColor="grey"
-//       borderStyle="dashed"
-//       textColor="black"
-//       w="19vw"
-//       h="10vh"
-//       justifyContent="center"
-//       borderRadius="10px"
-//       p="3px"
-//       gap="3px"
-//     >
-//       This is a card
-//     </Flex>
-//   );
-// };
-
-// export default AccountCard;
-
+/* eslint-disable react/prop-types */
 import { Flex, Image, Box, Text } from "@chakra-ui/react";
+// import users from "../../data/users";
 
-const AccountCard = () => {
+const AccountCard = ({ user }) => {
   return (
     <Flex
       bgColor="gray.100"
@@ -40,17 +20,15 @@ const AccountCard = () => {
       <Image
         borderRadius="full"
         boxSize="60px"
-        src=" https://www.computerhope.com/issues/pictures/win10-user-account-default-picture.png"
-        // "https://via.placeholder.com/60"
-        //https://www.shutterstock.com/image-vector/my-account-profile-user-icon-260nw-1700343232.jpg
+        src={user.avatar.url}
         alt="Profile Picture"
       />
       <Box>
         <Text fontWeight="bold" fontSize="lg">
-          John Doe
+          {user.username}
         </Text>
         <Text fontSize="sm" color="gray.600">
-          Hey there! I am using WhatsApp.
+          {user.email}
         </Text>
       </Box>
     </Flex>
