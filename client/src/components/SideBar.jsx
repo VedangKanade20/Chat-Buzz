@@ -3,7 +3,6 @@ import { MdOutlineChat } from "react-icons/md";
 import { IoIosPeople } from "react-icons/io";
 import { FaPenFancy } from "react-icons/fa";
 import { Flex, Icon, Spacer, Link } from "@chakra-ui/react";
-import { BsClockHistory } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { Link as RouterLink } from "react-router-dom";
 
@@ -32,21 +31,6 @@ const SideBar = () => {
               h="30px"
               name="Chats"
               title="Chats"
-              _hover={{
-                color: "grey",
-                transform: "scale(1.1)",
-                transition: "transform 0.2s, color 0.2s",
-              }}
-            />
-          </Link>
-          {/* STORY */}
-          <Link as={RouterLink} to="/story">
-            <Icon
-              as={BsClockHistory}
-              w="30px"
-              h="30px"
-              name="Story"
-              title="Story"
               _hover={{
                 color: "grey",
                 transform: "scale(1.1)",
