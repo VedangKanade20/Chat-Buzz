@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Flex, Image, Box, Text } from "@chakra-ui/react";
-import ViewProfilePicture from "./ViewProfilePic";
+import { Flex, Box, Text } from "@chakra-ui/react";
+import ProfilePicture from "./ProfilePhoto";
 // import users from "../../data/users";
 
 const AccountCard = ({ user }) => {
@@ -18,13 +18,7 @@ const AccountCard = ({ user }) => {
       p="10px"
       gap="10px"
     >
-      <Image
-        borderRadius="full"
-        boxSize="60px"
-        src={user.avatar.url}
-        alt="Profile Picture"
-        onClick={<ViewProfilePicture />}
-      />
+      <ProfilePicture />
       <Box>
         <Text fontWeight="bold" fontSize="lg">
           {user.username}
