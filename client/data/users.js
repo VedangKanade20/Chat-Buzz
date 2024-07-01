@@ -173,7 +173,7 @@ const users = [
         $oid: "667db56c282e68b48b1e3bff",
       },
     },
-    username: "randi_treutel60",
+    username: "randy_treutel60",
     email: "guadalupe.hahn@yahoo.com",
     password: "$2b$10$sm6LBNTXlTBBOM6uF2OCHOf669hjyOF2Ko9b1OqQVbg2r3MBfCdkS",
     loginType: "EMAIL_PASSWORD",

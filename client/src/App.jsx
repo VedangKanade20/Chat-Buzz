@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LeftSide from "./components/LeftSide";
 import AuthPage from "./Pages/AuthPage";
 import "./App.css";
+import SingleChatPage from "./Pages/SingleChatPage";
 
 const App = () => {
   return (

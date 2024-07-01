@@ -19,7 +19,7 @@ const LeftSide = () => {
       <Header />
       <Box gap="15px" overflowY="auto">
         {users.map((user) => (
-          <AccountCard key={user._id} user={user} />
+          <AccountCard key={user._id} user={user}  />
         ))}
       </Box>
     </Flex>

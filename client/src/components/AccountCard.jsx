@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Flex, Box, Text } from "@chakra-ui/react";
-import ProfilePicture from "./ProfilePhoto";
+import { Flex, Image, Box, Text, Link } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 // import users from "../../data/users";
 
 const AccountCard = ({ user }) => {
@@ -18,15 +18,22 @@ const AccountCard = ({ user }) => {
       p="10px"
       gap="10px"
     >
-      <ProfilePicture />
-      <Box>
-        <Text fontWeight="bold" fontSize="lg">
-          {user.username}
-        </Text>
-        <Text fontSize="sm" color="gray.600">
-          {user.email}
-        </Text>
-      </Box>
+      <Image
+        borderRadius="full"
+        boxSize="50px"
+        src={user.avatar.url}
+        alt="Profile Picture"
+      />
+      <Link as={RouterLink} to={`/${user._id}`}>
+        <Box>
+          <Text fontWeight="bold" fontSize="lg">
+            {user.username}
+          </Text>
+          <Text fontSize="sm" color="gray.600">
+            {user.email}
+          </Text>
+        </Box>
+      </Link>
     </Flex>
   );
 };
