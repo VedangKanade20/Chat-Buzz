@@ -10,6 +10,8 @@ import {
 import { Link as RouterLink, useParams } from "react-router-dom";
 import users from "../../data/users";
 import { useState } from "react";
+import SideBar from "../components/SideBar";
+import LeftSide from "../components/LeftSide";
 
 const MainPage = () => {
   const { id } = useParams();
@@ -25,36 +27,39 @@ const MainPage = () => {
     }
   };
 
-  if (!user) {
-    return (
-      <Flex alignItems="center" justifyContent="center">
-        <Flex
-          bgColor="green.100"
-          w="74vw"
-          h="89vh"
-          alignItems="center"
-          justifyContent="center"
-          textColor="black  "
-          borderRadius="5px"
-          overflowY="auto"
-          ml="3px"
-        >
-          <Text>Check your Chats</Text>
-        </Flex>
-      </Flex>
-    );
-  }
+  // if (!user) {
+  //   return (
+  //     <Flex alignItems="center" justifyContent="center">
+  //       <Flex
+  //         bgColor="green.100"
+  //         w="74vw"
+  //         h="89vh"
+  //         alignItems="center"
+  //         justifyContent="center"
+  //         textColor="black  "
+  //         borderRadius="5px"
+  //         overflowY="auto"
+  //         ml="3px"
+  //       >
+  //         <Text>Check your Chats</Text>
+  //       </Flex>
+  //     </Flex>
+  //   );
+  // }
 
   return (
     <>
+      <SideBar />
+      <LeftSide />
+
       <Flex direction="column" align="center">
         <Link
           as={RouterLink}
           to={`/${user._id}`}
           _hover={{ textDecor: "none" }}
         >
-          {/* WHOLE RIGHT SIDE */}
-          <Flex direction="column" justifyContent="center" alignItems="center">
+        {/* WHOLE RIGHT SIDE */}
+        {/* <Flex direction="column" justifyContent="center" alignItems="center">
             <Box
               bgColor="pink"
               w="78vw"
@@ -66,10 +71,10 @@ const MainPage = () => {
               This is Header for {user.username}
             </Box>
           </Flex>
-        </Link>
+        </Link> */}
 
         {/* Chat area */}
-        <Flex
+        {/* <Flex
           direction="column"
           w="78vw"
           h="85vh"
@@ -105,6 +110,8 @@ const MainPage = () => {
             </Button>
           </Flex>
         </Flex>
+      
+        */}
       </Flex>
     </>
   );
