@@ -1,7 +1,12 @@
-const express = require("express");
-const dotenv = require("dotenv");
+// const express = require("express");
+// const dotenv = require("dotenv");
 
-const users = require("./data/users");
+import dotenv from "dotenv";
+import express from "express";
+
+// const users = require("./data/users");
+
+import users from "./data/users";
 
 dotenv.config();
 
