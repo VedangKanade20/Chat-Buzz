@@ -31,14 +31,14 @@ const userSchema = mongoose.Schema(
     picture: {
       type: String,
     },
-    friendRequests: {
-      type: Array,
-      default: [],
-    },
-    userFriends: {
-      type: Array,
-      default: [],
-    },
+    // friendRequests: {
+    //   type: Array,
+    //   default: [],
+    // },
+    // userFriends: {
+    //   type: Array,
+    //   default: [],
+    // },
     notifications: {
       type: Array,
       default: [],
