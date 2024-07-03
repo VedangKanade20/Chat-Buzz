@@ -1,14 +1,12 @@
-// const express = require("express");
-// const dotenv = require("dotenv");
-
 import dotenv from "dotenv";
 import express from "express";
 
-// const users = require("./data/users");
-
-import users from "./data/users";
+import users from "./data/users.js";
+import connectDB from "./config/db.js";
 
 dotenv.config();
+
+connectDB();
 
 const app = express();
 
