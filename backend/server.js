@@ -1,8 +1,11 @@
 const express = require("express");
-const users = require("./data/users");
-const app = express();
+const dotenv = require("dotenv");
 
-const port = 8080;
+const users = require("./data/users");
+
+dotenv.config();
+
+const app = express();
 
 app.use(express.json());
 
@@ -23,6 +26,10 @@ app.get("/api/chats/:id", (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}...`);
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+  console.log(
+    `Server is running on port ${process.env.NODE_ENV} mode on ${PORT}...`
+  );
 });

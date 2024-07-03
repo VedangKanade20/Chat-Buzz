@@ -208,6 +208,7 @@ const users = [
     password: "$2b$10$K1tm9LoSAvtccepxtBu2pOnEICxEA6Q4xLUGq.3np8HWL.CFPqVNi",
     loginType: "EMAIL_PASSWORD",
     isEmailVerified: true,
+    
   },
 ];
 
