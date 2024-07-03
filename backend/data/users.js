@@ -1,215 +1,243 @@
-const users = [
-  {
-    _id: 1,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1247.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3b7e",
-      },
-    },
-    username: "reilly_oreilly8",
-    email: "marshall_blick@hotmail.com",
-    password: "$2b$10$sZRfyCp2k7O4H0CGXwSlgOUqqxGOPjDVl3sXPxrpUKjNUGz1U0oF.",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+const users = const users =
+[{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac634c"
   },
-  {
-    _id: 2,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/545.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3b84",
-      },
-    },
-    username: "macy.christiansen",
-    email: "ora59@hotmail.com",
-    password: "$2b$10$frkYJEFyFBOLfSH9DWGW0uOFqQ2zllJH.fhHTSr.GqCoH2udNI3lq",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Emily",
+  "lastName": "Johnson",
+  "age": 28,
+  "gender": "female",
+  "email": "emily.johnson@x.dummyjson.com",
+  "username": "emilys",
+  "hair": {
+    "type": "Curly"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac634d"
   },
-  {
-    _id: 3,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/916.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3b7b",
-      },
-    },
-    username: "dorothea_hagenes19",
-    email: "alexanne46@yahoo.com",
-    password: "$2b$10$wefbyWZfjmbjI5uQCSrnvudaDLyQh.lQcRoZfQY5j2hW7C5RJJxOC",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Michael",
+  "lastName": "Williams",
+  "age": 35,
+  "gender": "male",
+  "email": "michael.williams@x.dummyjson.com",
+  "username": "michaelw",
+  "hair": {
+    "type": "Straight"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac634e"
   },
-  {
-    _id: 4,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/336.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3b72",
-      },
-    },
-    username: "allene_powlowski",
-    email: "retta.johns@hotmail.com",
-    password: "$2b$10$lMZAPOTnMdy3ldptIiK9b./kAsZ01o2ZujvOsA2ZtGuk2aeskKDwO",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Sophia",
+  "lastName": "Brown",
+  "age": 42,
+  "gender": "female",
+  "email": "sophia.brown@x.dummyjson.com",
+  "username": "sophiab",
+  "hair": {
+    "type": "Wavy"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac634f"
   },
-  {
-    _id: 5,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1126.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3b87",
-      },
-    },
-    username: "shanny_stark32",
-    email: "toy40@hotmail.com",
-    password: "$2b$10$oaaQiCMT/qDxB9Z1LXUX4.55OKutOg30PjU5wC70sHmyruFGQ1uii",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "James",
+  "lastName": "Davis",
+  "age": 45,
+  "gender": "male",
+  "email": "james.davis@x.dummyjson.com",
+  "username": "jamesd",
+  "hair": {
+    "type": "Straight"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6350"
   },
-  {
-    _id: 6,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/181.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3b90",
-      },
-    },
-    username: "jayce76",
-    email: "keeley.schulist59@hotmail.com",
-    password: "$2b$10$spWkSrEO6uVX5h7EpWXwYewfpMaU9mYMrX3WrPazcog0kc90cebAu",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Emma",
+  "lastName": "Miller",
+  "age": 30,
+  "gender": "female",
+  "email": "emma.miller@x.dummyjson.com",
+  "username": "emmaj",
+  "hair": {
+    "type": "Straight"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6351"
   },
-  {
-    _id: 7,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1009.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3bed",
-      },
-    },
-    username: "river.schiller",
-    email: "nick.strosin@yahoo.com",
-    password: "$2b$10$XXdjv84xET5asORVJnBBteUGkXCHHCyULOe5qf0a0EUwZUvQ0bOTm",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Olivia",
+  "lastName": "Wilson",
+  "age": 22,
+  "gender": "female",
+  "email": "olivia.wilson@x.dummyjson.com",
+  "username": "oliviaw",
+  "hair": {
+    "type": "Curly"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6352"
   },
-  {
-    _id: 8,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/88.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3bf9",
-      },
-    },
-    username: "kody_stamm86",
-    email: "abigail.muller88@yahoo.com",
-    password: "$2b$10$sQmYGWcvqrZ9OcxGTgruWe6mwygSJo0y5HO4BR7Nt1qR6MuDwok2G",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Alexander",
+  "lastName": "Jones",
+  "age": 38,
+  "gender": "male",
+  "email": "alexander.jones@x.dummyjson.com",
+  "username": "alexanderj",
+  "hair": {
+    "type": "Straight"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6353"
   },
-  {
-    _id: 9,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/405.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3bf0",
-      },
-    },
-    username: "paolo_moen",
-    email: "itzel.powlowski74@hotmail.com",
-    password: "$2b$10$ZNP32PLeCFBIpQOI1xFZOe3WBlDGQtKhD/UCRzm2JqlLHJJpl6qkq",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Ava",
+  "lastName": "Taylor",
+  "age": 27,
+  "gender": "female",
+  "email": "ava.taylor@x.dummyjson.com",
+  "username": "avat",
+  "hair": {
+    "type": "Kinky"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6354"
   },
-  {
-    _id: 10,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/19.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3bf3",
-      },
-    },
-    username: "tamara_zemlak90",
-    email: "rosalinda95@hotmail.com",
-    password: "$2b$10$ZzMPyQgwxOnbiHhftR6bGeKW/ykKGv7i1NY2jCo.yhNBc30VSfkF2",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Ethan",
+  "lastName": "Martinez",
+  "age": 33,
+  "gender": "male",
+  "email": "ethan.martinez@x.dummyjson.com",
+  "username": "ethanm",
+  "hair": {
+    "type": "Curly"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6355"
   },
-  {
-    _id: 11,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/778.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3bf6",
-      },
-    },
-    username: "alycia_jones",
-    email: "buddy_champlin@yahoo.com",
-    password: "$2b$10$KdeHLpdb9sydhN55twxDlO4v3DKRanqLYv1xq0f3GE4KCkfG/oyim",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Isabella",
+  "lastName": "Anderson",
+  "age": 31,
+  "gender": "female",
+  "email": "isabella.anderson@x.dummyjson.com",
+  "username": "isabellad",
+  "hair": {
+    "type": "Curly"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6356"
   },
-  {
-    _id: 12,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/703.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3bff",
-      },
-    },
-    username: "randy_treutel60",
-    email: "guadalupe.hahn@yahoo.com",
-    password: "$2b$10$sm6LBNTXlTBBOM6uF2OCHOf669hjyOF2Ko9b1OqQVbg2r3MBfCdkS",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Liam",
+  "lastName": "Garcia",
+  "age": 29,
+  "gender": "male",
+  "email": "liam.garcia@x.dummyjson.com",
+  "username": "liamg",
+  "hair": {
+    "type": "Wavy"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6357"
   },
-  {
-    _id: 13,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/442.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3c05",
-      },
-    },
-    username: "pat28",
-    email: "isac.tremblay@yahoo.com",
-    password: "$2b$10$dClnfTIwj6fLkzcksPm0/.HQsXkpe8/6kBRv8Uycfye4nLmWl4c4y",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Mia",
+  "lastName": "Rodriguez",
+  "age": 24,
+  "gender": "female",
+  "email": "mia.rodriguez@x.dummyjson.com",
+  "username": "miar",
+  "hair": {
+    "type": "Wavy"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac6358"
   },
-  {
-    _id: 14,
-    avatar: {
-      url: "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/496.jpg",
-      localPath: "",
-      _id: {
-        $oid: "667db56c282e68b48b1e3b81",
-      },
-    },
-    username: "ryann63",
-    email: "amelia39@yahoo.com",
-    password: "$2b$10$K1tm9LoSAvtccepxtBu2pOnEICxEA6Q4xLUGq.3np8HWL.CFPqVNi",
-    loginType: "EMAIL_PASSWORD",
-    isEmailVerified: true,
+  "firstName": "Noah",
+  "lastName": "Hernandez",
+  "age": 40,
+  "gender": "male",
+  "email": "noah.hernandez@x.dummyjson.com",
+  "username": "noahh",
+  "hair": {
+    "type": "Curly"
+  }
+},
+
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac63e9"
   },
-];
+  "firstName": "Aubrey",
+  "lastName": "Gutierrez",
+  "age": 36,
+  "gender": "female",
+  "email": "aubrey.gutierrez@x.dummyjson.com",
+  "username": "aubreyb",
+  "hair": {
+    "type": "Wavy"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac63ea"
+  },
+  "firstName": "Eli",
+  "lastName": "Ward",
+  "age": 30,
+  "gender": "male",
+  "email": "eli.ward@x.dummyjson.com",
+  "username": "eliw",
+  "hair": {
+    "type": "Wavy"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac63eb"
+  },
+  "firstName": "Claire",
+  "lastName": "Foster",
+  "age": 29,
+  "gender": "female",
+  "email": "claire.foster@x.dummyjson.com",
+  "username": "claires",
+  "hair": {
+    "type": "Wavy"
+  }
+},
+{
+  "_id": {
+    "$oid": "66852f23fb0c2b326fac641b"
+  },
+  "firstName": "Samantha",
+  "lastName": "Martinez",
+  "age": 27,
+  "gender": "female",
+  "email": "samantha.martinez@x.dummyjson.com",
+  "username": "samanthal",
+  "hair": {
+    "type": "Straight"
+  }
+}]
 
 //export default users;
 module.exports = users;
