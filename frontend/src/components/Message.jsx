@@ -1,11 +1,13 @@
-import { Box } from "@chakra-ui/react";
+/* eslint-disable react/prop-types */
+import { Alert, AlertIcon, AlertTitle } from '@chakra-ui/react';
 
-const Message = () => {
-  return (
-    <Box w="full" h="5vh" textColor="black" bgColor="white">
-      This is a message
-    </Box>
-  );
+const Message = ({ type = 'info', children }) => {
+	return (
+		<Alert status={type}>
+			<AlertIcon />
+			<AlertTitle>{children}</AlertTitle>
+		</Alert>
+	);
 };
 
 export default Message;
