@@ -22,6 +22,7 @@ const userSchema = mongoose.Schema(
     },
     gender: {
       type: String,
+      enum: ["male", "female"], //enum better feature for selecting
       required: true,
     },
     email: {
@@ -31,24 +32,12 @@ const userSchema = mongoose.Schema(
     },
     picture: {
       type: String,
+      default: "",
     },
-    // friendRequests: {
+    // notifications: {
     //   type: Array,
     //   default: [],
     // },
-    // userFriends: {
-    //   type: Array,
-    //   default: [],
-    // },
-    notifications: {
-      type: Array,
-      default: [],
-    },
-    isAdmin: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
   },
   { timestamps: true }
 );

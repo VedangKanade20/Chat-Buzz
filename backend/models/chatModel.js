@@ -1,33 +1,40 @@
+// import mongoose from "mongoose";
+
+// const chatSchema = mongoose.Schema(
+//   {
+//     participants: [
+//       {
+//         type: Schema.Types.ObjectId,
+//         ref: "User",
+//       },
+//     ],
+//   },
+//   { timestamps: true }
+// );
+
+// const Chat = mongoose.model("chats", chatSchema);
+
+// export default Chat;
+
+//
+
 import mongoose from "mongoose";
 
-const chatSchema = mongoose.Schema(
+const chatSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    isGroupChat: {
-      type: Boolean,
-      default: false,
-    },
-    lastMessage: {
-      type: Schema.Types.ObjectId,
-      ref: "ChatMessage",
-    },
     participants: [
       {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
     ],
-    admin: {
-      type: Schema.Types.ObjectId,
-      ref: "User",
-    },
+    messages: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Message",
+      },
+    ],
   },
   { timestamps: true }
 );
-
-const Chat = mongoose.model("chats", chatSchema);
-
-export default Chat;
+export const Chat = mongoose.model("Chat", chatSchema);
