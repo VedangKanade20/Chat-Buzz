@@ -50,6 +50,15 @@ const messageSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    attachments: {
+      type: [
+        {
+          url: String,
+          localPath: String,
+        },
+      ],
+      default: [],
+    },
   },
   { timestamps: true }
 );
