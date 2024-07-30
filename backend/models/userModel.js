@@ -34,10 +34,10 @@ const userSchema = mongoose.Schema(
       type: String,
       default: "",
     },
-    // notifications: {
-    //   type: Array,
-    //   default: [],
-    // },
+    notifications: {
+      type: Array,
+      default: [],
+    },
   },
   { timestamps: true }
 );
