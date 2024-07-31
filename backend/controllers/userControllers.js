@@ -1,6 +1,9 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
+import validator from "validator";
+import bcrypt from "bcryptjs";
+import { JsonWebTokenError } from "jsonwebtoken";
 
 /**
  * @desc    Auth user
@@ -64,6 +67,19 @@ const registerUser = asyncHandler(async (req, res) => {
   if (userExists) {
     res.status(400); //bad request
     throw new Error("User already exists");
+  }
+
+  if (
+    !firstName ||
+    !lastName ||
+    !email ||
+    !username ||
+    !password ||
+    !gender ||
+    !picture
+  ) {
+    return res.status(400);
+    throw new Error("Required Fields cannot be Empty!!!");
   }
 
   const user = await User.create({
@@ -142,19 +158,29 @@ const registerUser = asyncHandler(async (req, res) => {
  * @route GET api/users/search
  * @access  public*/
 const searchUser = async (req, res) => {
-  // const { search } = req.query;
-  const search = req.query.search
-    ? {
-        $or: [
-          { username: { $regex: req.query.search, $options: "i" } },
-          { email: { $regex: req.query.search, $options: "i" } },
-          { firstName: { $regex: req.query.search, $options: "i" } },
-        ],
-      }
-    : {};
+  try {
+    const search = req.query.search
+      ? {
+          $or: [
+            { username: { $regex: req.query.search, $options: "i" } },
+            { email: { $regex: req.query.search, $options: "i" } },
+            { firstName: { $regex: req.query.search, $options: "i" } },
+          ],
+        }
+      : {};
 
-  const users = await User.find(search).find({ _id: { $ne: req.rootUserId } });
-  res.status(200).send(users);
+    const users = await User.find(search).find({
+      _id: { $ne: req.rootUserId },
+    });
+
+    if (users.length === 0) {
+      return res.status(404).send({ message: "No users found" });
+    }
+
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(500).send({ message: "Server error", error: error.message });
+  }
 };
 
 export { authUser, getUserProfile, registerUser, searchUser };
