@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
+import Chat from "./chatModel.js";
 
 const messageSchema = mongoose.Schema(
   {
-    senderId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    chatId: {
+      type: String,
+      ref: Chat,
       required: true,
     },
     receiverId: {
@@ -12,11 +13,12 @@ const messageSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
-    message: {
-      type: String,
-      required: true,
-    },
-    attachments: {
+    // message: {
+    //   type: Array,
+    //   required: true,
+    //   default: [],
+    // },
+    chats: {
       type: [
         {
           url: String,
@@ -28,6 +30,5 @@ const messageSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-// export const Message = mongoose.model("Message", messageModel);
-
 const Message = mongoose.model("Message", messageSchema);
+export default Message;

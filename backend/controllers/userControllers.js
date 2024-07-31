@@ -1,9 +1,8 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
-import validator from "validator";
-import bcrypt from "bcryptjs";
-import { JsonWebTokenError } from "jsonwebtoken";
+
+
 
 /**
  * @desc    Auth user
