@@ -3,9 +3,9 @@ import Chat from "./chatModel.js";
 
 const messageSchema = mongoose.Schema(
   {
-    chatId: {
-      type: String,
-      ref: Chat,
+    senderId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     receiverId: {
