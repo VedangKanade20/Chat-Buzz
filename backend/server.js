@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 
 import connectDB from "./config/db.js";
-import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
+// import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 
@@ -22,8 +22,8 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
 
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
 const PORT = process.env.PORT || 8080;
 
