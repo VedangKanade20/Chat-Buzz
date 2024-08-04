@@ -13,19 +13,9 @@ const messageSchema = mongoose.Schema(
       ref: "User",
       required: true,
     },
-    // message: {
-    //   type: Array,
-    //   required: true,
-    //   default: [],
-    // },
-    chats: {
-      type: [
-        {
-          url: String,
-          localPath: String,
-        },
-      ],
-      default: [],
+    message: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }
