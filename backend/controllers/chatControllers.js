@@ -8,7 +8,7 @@ import Message from "../models/messageModel.js";
  * @access  private*/
 const chatOneOnOne = asyncHandler(async (req, res) => {
   try {
-    const senderId = req.id;
+    const senderId = req.user._id;
     const receiverId = req.params.id;
     const { message } = req.body;
 
@@ -41,5 +41,18 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
     console.log(err);
   }
 });
+
+/**
+ *@desc   Show chats
+ *@route   GET api/chats
+ *@access    private*/
+// const getChats = asyncHandler(async (req, res) => {
+//   const senderId = req.user._id;
+//   const senderName = req.user.username;
+
+//   if (senderName) {
+
+//   }
+// });
 
 export { chatOneOnOne };
