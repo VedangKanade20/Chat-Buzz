@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import Chat from "../models/chatModel.js";
 import Message from "../models/messageModel.js";
+import messages from "../data/messages.js";
 
 /**
  * @desc    Chat with user(ONE ON ONE)
@@ -29,7 +30,7 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
     });
 
     if (newMessage) {
-      existingChat.messages.push(newMessage._id);
+      existingChat.chats.push(newMessage._id);
     }
 
     await Promise.all([existingChat.save(), newMessage.save()]);
@@ -46,13 +47,28 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
  *@desc   Show chats
  *@route   GET api/chats
  *@access    private*/
-// const getChats = asyncHandler(async (req, res) => {
-//   const senderId = req.user._id;
-//   const senderName = req.user.username;
+const getMessage = asyncHandler(async (req, res) => {
+  try {
+    const receiverId = req.params.id; // Ensure your route is defined as /api/chat/:id
+    const senderId = req.user._id;
 
-//   if (senderName) {
+    // Find the chat between the sender and receiver
+    const connection = await Chat.findOne({
+      members: { $all: [senderId, receiverId] },
+    }).populate("messages"); // Populates the messages associated with this chat
 
-//   }
-// });
+    if (!connection) {
+      return res
+        .status(404)
+        .json({ message: "No chat found, start your conversation" });
+      //if no chat is found
+    } else {
+      return res.status(200).json(connection.messages);
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
 
-export { chatOneOnOne };
+export { chatOneOnOne, getMessage };
