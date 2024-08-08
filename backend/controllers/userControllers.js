@@ -2,8 +2,6 @@ import asyncHandler from "express-async-handler";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 
-
-
 /**
  * @desc    Auth user
  * @route   POST /api/users/login
@@ -111,27 +109,6 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 /**
- * @desc  Search a friend
- * @route GET api/users/
- * @access  public*/
-/* const searchFriend = asyncHandler(async (req, res) => {
-  const { email } = req.body;
-  const user = await User.findOne({ email });
-
-  if (user) {
-    res.json({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-      picture: user.picture,
-    });
-  } else {
-    res.status(404);
-    throw new Error("Your friend not found");
-  }
-});
- */
-/**
  * @desc  Search a user
  * @route GET api/users/
  * @access  public*/ //THIS IS OUR CODE
@@ -157,6 +134,7 @@ const registerUser = asyncHandler(async (req, res) => {
  * @route GET api/users/search
  * @access  public*/
 const searchUser = async (req, res) => {
+  const rootUserId = req.user._id;
   try {
     const search = req.query.search
       ? {
@@ -169,7 +147,7 @@ const searchUser = async (req, res) => {
       : {};
 
     const users = await User.find(search).find({
-      _id: { $ne: req.rootUserId },
+      _id: { $ne: rootUserId },
     });
 
     if (users.length === 0) {
@@ -182,4 +160,26 @@ const searchUser = async (req, res) => {
   }
 };
 
-export { authUser, getUserProfile, registerUser, searchUser };
+/**
+ * @desc    Get list of all users the logged-in user can chat with
+ * @route   GET /api/users
+ * @access  Private
+ */
+const getUsersToChatWith = asyncHandler(async (req, res) => {
+  const loggedInUserId = req.user._id;
+
+  // Find all users except the logged-in user
+  const users = await User.find({ _id: { $ne: loggedInUserId } }).select(
+    "-password"
+  );
+
+  res.status(200).json(users);
+});
+
+export {
+  authUser,
+  getUserProfile,
+  registerUser,
+  searchUser,
+  getUsersToChatWith,
+};
