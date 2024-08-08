@@ -4,7 +4,7 @@ import Message from "../models/messageModel.js";
 
 /**
  * @desc    Chat with user(ONE ON ONE)
- * @route   GET api/chat/user_id
+ * @route   POST api/chats/user_id
  * @access  private*/
 const chatOneOnOne = asyncHandler(async (req, res) => {
   try {
@@ -46,13 +46,13 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
  *@desc   Show chats
  *@route   GET api/chats
  *@access    private*/
-const getChats = asyncHandler(async (req, res) => {
-  const senderId = req.user._id;
-  const senderName = req.user.username;
+// const getChats = asyncHandler(async (req, res) => {
+//   const senderId = req.user._id;
+//   const senderName = req.user.username;
 
-  if (senderName) {
-    
-  }
-});
+//   if (senderName) {
+
+//   }
+// });
 
 export { chatOneOnOne };

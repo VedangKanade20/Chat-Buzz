@@ -7,6 +7,6 @@ import { getUsersToChatWith } from "../controllers/userControllers.js";
 const router = express.Router();
 
 router.route("/").get(protect, getUsersToChatWith);
-router.route("/:userId").get(protect, chatOneOnOne);
+router.route("/:id").post(protect, chatOneOnOne);
 
 export default router;
