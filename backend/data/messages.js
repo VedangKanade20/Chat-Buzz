@@ -1,41 +1,24 @@
 const messages = [
-    {
-      chatId: '60d21b5867d0d8992e610c89', // General Chat
-      Chats: [
-        {
-          sender: '60d21b4667d0d8992e610c85',
-          content: 'Hello everyone!',
-          timestamp: new Date(),
-        },
-        {
-          sender: '60d21b4667d0d8992e610c86',
-          content: 'Hi Emily!',
-          timestamp: new Date(),
-        },
-        {
-          sender: '60d21b4667d0d8992e610c87',
-          content: 'How are you all doing?',
-          timestamp: new Date(),
-        },
-      ],
-    },
-    {
-      chatId: '60d21b5867d0d8992e610c8a', // Private Chat between Emily and another user
-      Chats: [
-        {
-          sender: '60d21b4667d0d8992e610c85',
-          content: 'Hey, are you available for a quick call?',
-          timestamp: new Date(),
-        },
-        {
-          sender: '60d21b4667d0d8992e610c88',
-          content: 'Sure, give me 5 minutes.',
-          timestamp: new Date(),
-        },
-      ],
-    },
-    // Add more chat data as needed
-  ];
-  
-  export default messages;
-  
+  {
+    senderId: "605c72ef7e0f9b2f30c8e0d0", // Replace with real ObjectId
+    receiverId: "605c72ef7e0f9b2f30c8e0d1", // Replace with real ObjectId
+    message: "Hey there! How are you?",
+  },
+  {
+    senderId: "605c72ef7e0f9b2f30c8e0d1", // Replace with real ObjectId
+    receiverId: "605c72ef7e0f9b2f30c8e0d0", // Replace with real ObjectId
+    message: "I am good, thanks! How about you?",
+  },
+  {
+    senderId: "605c72ef7e0f9b2f30c8e0d2", // Replace with real ObjectId
+    receiverId: "605c72ef7e0f9b2f30c8e0d3", // Replace with real ObjectId
+    message: "Can we schedule a meeting for tomorrow?",
+  },
+  {
+    senderId: "605c72ef7e0f9b2f30c8e0d3", // Replace with real ObjectId
+    receiverId: "605c72ef7e0f9b2f30c8e0d2", // Replace with real ObjectId
+    message: "Sure, what time works for you?",
+  },
+];
+
+export default messages;
