@@ -1,6 +1,8 @@
 import { Flex, Heading, Image } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Flex
       alignItems="center"
@@ -17,6 +19,12 @@ const Header = () => {
         alt="Logo"
         boxSize="40px"
         mr="10px"
+        _hover={{
+          transform: "scale(1.1)", // Slightly increase the size on hover
+          boxShadow: "0 25px 25px rgba(0, 0, 0, 0.5)", // Add a shadow on hover
+        }}
+        onClick={() => navigate("/chat")}
+        cursor="pointer"
       />
       <Heading as="h1" size="md" color="white">
         Chat-Buzz
