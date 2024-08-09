@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import { Flex, Heading, Image } from "@chakra-ui/react";
 
 const Header = () => {
   return (
@@ -7,10 +7,18 @@ const Header = () => {
       justifyContent="start"
       w="full"
       p="10px"
-      bgColor="green.800"
+      bgColor="black"
       borderRadius="10px"
+      borderColor="yellow"
+      borderStyle="dashed"
     >
-      <Heading as="h1" size="md">
+      <Image
+        src="../../logoCHAT-BUZZ.png"
+        alt="Logo"
+        boxSize="40px"
+        mr="10px"
+      />
+      <Heading as="h1" size="md" color="white">
         Chat-Buzz
       </Heading>
     </Flex>

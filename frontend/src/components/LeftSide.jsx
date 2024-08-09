@@ -4,6 +4,7 @@ import Header from "./Header";
 const LeftSide = () => {
   return (
     <Flex
+      backgroundColor="gray.900"
       borderStyle="dotted"
       borderColor="red"
       textColor="white"

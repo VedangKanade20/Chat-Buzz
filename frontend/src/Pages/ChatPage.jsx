@@ -11,6 +11,8 @@ const ChatPage = () => {
         alignItems="center" // Aligns items vertically in the center
         justifyContent="center"
         w="100vw"
+        gap="3px"
+        textColor="white"
       >
         <LeftSide />
         <ChatArea />

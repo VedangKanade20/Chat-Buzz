@@ -9,7 +9,7 @@ const ChatArea = () => {
       direction="column"
       borderRadius="10px"
       gap="5px"
-      bgColor="yellow"
+      backgroundColor="gray.900"
     >
       ChatArea
     </Flex>
