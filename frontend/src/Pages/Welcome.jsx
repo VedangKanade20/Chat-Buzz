@@ -1,69 +1,3 @@
-// import { Button, Flex, Heading, Image } from "@chakra-ui/react";
-// import { useNavigate } from "react-router-dom";
-
-// const WelcomePage = () => {
-//   const navigate = useNavigate();
-//   return (
-//     <Flex alignItems="center" justifyContent="center" height="100vh" w="100vw">
-//       <Flex
-//         alignItems="center"
-//         justifyContent="center"
-//         gap="10"
-//         direction="column"
-//         mb="10"
-//       >
-//         <Flex direction="column" alignItems="center" justifyContent="center">
-//           <Image
-//             src="../../logoCHAT-BUZZ.png"
-//             alt="Logo"
-//             borderRadius="full"
-//             boxSize="120px"
-//             mb="20px"
-//             _hover={{
-//               transform: "scale(1.1)", // Slightly increase the size on hover
-//               boxShadow: "0 25px 25px rgba(0, 0, 0, 0.5)", // Add a shadow on hover
-//             }}
-//             transition="transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out" // Smooth transition effect
-//           />
-//           <Heading textColor="black" fontFamily="robert" fontSize="70">
-//             Welcome to Chat Buzz
-//           </Heading>
-//         </Flex>
-//         <Flex direction="row" gap="50px">
-//           <Button
-//             bgColor="black"
-//             w="60"
-//             alignItems="center"
-//             justifyContent="center"
-//             textColor="white"
-//             fontFamily="robert"
-//             onClick={() => navigate("/login")}
-//             h="35"
-//             fontSize="30"
-//           >
-//             Login
-//           </Button>
-//           <Button
-//             bgColor="black"
-//             w="60"
-//             alignItems="center"
-//             justifyContent="center"
-//             textColor="white"
-//             fontFamily="robert"
-//             onClick={() => navigate("/register")}
-//             fontSize="30"
-//             h="35"
-//           >
-//             Register
-//           </Button>
-//         </Flex>
-//       </Flex>
-//     </Flex>
-//   );
-// };
-
-// export default WelcomePage;
-
 import { Button, Flex, Heading, Image, keyframes } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -82,13 +16,7 @@ const slideInAnimation = keyframes`
 const WelcomePage = () => {
   const navigate = useNavigate();
   return (
-    <Flex
-      alignItems="center"
-      justifyContent="center"
-      height="100vh"
-      w="100vw"
-      // Original background color
-    >
+    <Flex alignItems="center" justifyContent="center" height="100vh" w="100vw">
       <Flex
         alignItems="center"
         justifyContent="center"

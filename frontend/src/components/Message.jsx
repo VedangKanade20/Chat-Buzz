@@ -1,6 +1,6 @@
 import { Box } from "@chakra-ui/react";
 
-const MessageCard = () => {
+const Message = () => {
   return (
     <Box w="full" h="5vh" textColor="black" bgColor="white">
       This is a message
@@ -8,4 +8,4 @@ const MessageCard = () => {
   );
 };
 
-export default MessageCard;
+export default Message;

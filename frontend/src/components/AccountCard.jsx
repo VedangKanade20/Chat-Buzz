@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Flex, Image, Box, Text, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-// import users from "../../data/users";
+
 
 const AccountCard = ({ user }) => {
   return (
