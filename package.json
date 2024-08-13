@@ -4,6 +4,7 @@
   "description": "An api for chat app.",
   "main": "server.js",
   "type": "module",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon backend/server",

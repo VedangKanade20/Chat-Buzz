@@ -1,6 +1,7 @@
 import colors from "colors";
 import dotenv from "dotenv";
 import express from "express";
+import cors from "cors";
 
 import connectDB from "./config/db.js";
 // import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
@@ -14,6 +15,14 @@ connectDB();
 const app = express();
 
 app.use(express.json());
+app.use(cors()); // Enable CORS for all routes and origins
+
+// OR to restrict it to a specific origin
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("API is running, authentication soon.....");

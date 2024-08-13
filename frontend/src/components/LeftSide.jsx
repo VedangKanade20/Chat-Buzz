@@ -1,5 +1,6 @@
-import { Flex, Box, Text } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import Header from "./Header";
+import ListOfUsers from "./ListOfUsers";
 
 const LeftSide = () => {
   return (
@@ -18,7 +19,8 @@ const LeftSide = () => {
     >
       <Header />
       <Box gap="15px" overflowY="auto">
-        <Text> Hello</Text>
+        {/* call other users here like not hook but the users  */}
+        <ListOfUsers />
       </Box>
     </Flex>
   );
