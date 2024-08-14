@@ -3,6 +3,8 @@
 // import { useDispatch } from "react-redux";
 // import { Link, useNavigate } from "react-router-dom";
 // import toast from "react-hot-toast";
+// import { InputGroup, InputRightElement, IconButton } from "@chakra-ui/react";
+// import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 // import { setAuthUser } from "../redux/userSlice";
 // import {
 //   Box,
@@ -52,64 +54,98 @@
 //       password: "",
 //     });
 //   };
+//   const [showPassword, setShowPassword] = useState(false);
+
+//   const togglePasswordVisibility = () => {
+//     setShowPassword(!showPassword);
+//   };
 
 //   return (
 //     <Flex
 //       direction="column"
 //       justifyContent="center"
 //       alignItems="center"
-//       class="mainFlex"
 //       minH="100vh"
 //       w="100vw"
 //     >
 //       <Flex
 //         w="45vw"
 //         h="70vh"
-//         p="4"
+//         p="8"
 //         bgColor="black"
 //         color="white"
-//         borderRadius="20"
+//         borderRadius="20px"
 //         boxShadow="lg"
-//         class="boxForm"
-//         gap="20px"
 //         direction="column"
 //         alignItems="center"
+//         justifyContent="space-between"
 //       >
-//         <Heading fontSize="2xl" mb="4" textAlign="center">
-//           To Continue, Log into your ChatBuzz Account
+//         <Heading fontSize="3xl" textAlign="center">
+//           Log into your ChatBuzz Account
 //         </Heading>
-//         <form onSubmit={onSubmitHandler}>
+
+//         <VStack spacing="4" w="full">
 //           {/* EMAIL ID */}
-//           <Text>Enter Your Email</Text>
-//           <Input
-//             placeholder="Email"
-//             type="email"
-//             value={user.email}
-//             onChange={(e) => setUser({ ...user, email: e.target.value })}
-//             bgColor="white"
-//             color="black"
-//             w="400px"
-//           />
-//           <Spacer />
+//           <Box mt="4" w="full">
+//             <Text mb="4">Enter Your Email</Text>
+//             <Input
+//               placeholder="Email"
+//               type="email"
+//               value={user.email}
+//               onChange={(e) => setUser({ ...user, email: e.target.value })}
+//               bgColor="white"
+//               color="black"
+//               w="full"
+//             />
+//           </Box>
+
 //           {/* PASSWORD */}
-//           <Text>Enter Your Password</Text>
-//           <Input
-//             placeholder="Password"
-//             type="password"
-//             value={user.password}
-//             onChange={(e) => setUser({ ...user, password: e.target.value })}
-//             bgColor="white"
-//             color="black"
-//             w="400px"
-//           />
-//           <Button type="submit" bgColor="blue" w="400px">
+//           <Box mt="2" w="full">
+//             <Text mb="4">Enter Your Password</Text>
+//             <InputGroup size="md">
+//               <Input
+//                 placeholder="Password"
+//                 type={showPassword ? "text" : "password"}
+//                 value={user.password}
+//                 onChange={(e) => setUser({ ...user, password: e.target.value })}
+//                 bgColor="white"
+//                 color="black"
+//                 w="full"
+//               />
+//               <InputRightElement width="4.5rem">
+//                 <IconButton
+//                   h="1.75rem"
+//                   size="sm"
+//                   onClick={togglePasswordVisibility}
+//                   icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
+//                 />
+//               </InputRightElement>
+//             </InputGroup>
+//           </Box>
+
+//           {/* LOGIN BUTTON */}
+//           <Button
+//             mt="3"
+//             type="submit"
+//             bgColor="blue.500"
+//             color="white"
+//             w="full"
+//             onClick={onSubmitHandler}
+//           >
 //             Login!
 //           </Button>
-//           <Text fontSize="2xl">Dont have an Account?, For New users</Text>
-//           <Link as={RouterLink} to={"/register"} color="blue.500">
-//             Click Here
+//         </VStack>
+
+//         <Box textAlign="center" mt="auto">
+//           <Text mb="2" textColor="red" textDecor="bold">
+//             Dont have an Account?{" "}
+//           </Text>
+//           <Link as={RouterLink} to="/register">
+//             <Text textColor="green" textDecor="underline">
+//               Click Here
+//             </Text>
 //           </Link>
-//         </form>
+//         </Box>
 //       </Flex>
 //     </Flex>
 //   );
@@ -117,13 +153,11 @@
 
 // export default LoginPage;
 
-/* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { InputGroup, InputRightElement, IconButton } from "@chakra-ui/react";
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import axios from "axios";
 import { setAuthUser } from "../redux/userSlice";
 import {
   Box,
@@ -134,9 +168,12 @@ import {
   VStack,
   Heading,
   Spacer,
+  InputGroup,
+  InputRightElement,
+  IconButton,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { Link as RouterLink } from "react-router-dom";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -146,6 +183,12 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -173,11 +216,6 @@ const LoginPage = () => {
       password: "",
     });
   };
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
 
   return (
     <Flex
@@ -186,27 +224,32 @@ const LoginPage = () => {
       alignItems="center"
       minH="100vh"
       w="100vw"
+      p="4"
     >
+      {/* Logo Section */}
+      <Box mb="6">
+        <img src="../../logoCHAT-BUZZ.png" width="80px" alt="ChatBuzz Logo" />
+      </Box>
+
+      {/* Form Section */}
       <Flex
-        w="45vw"
-        h="70vh"
-        p="8"
+        w="30vw" // Smaller width for the form
+        p="6"
         bgColor="black"
         color="white"
         borderRadius="20px"
         boxShadow="lg"
         direction="column"
         alignItems="center"
-        justifyContent="space-between"
       >
-        <Heading fontSize="3xl" textAlign="center">
+        <Heading fontSize="xl" textAlign="center" mb="4">
           Log into your ChatBuzz Account
         </Heading>
 
         <VStack spacing="4" w="full">
           {/* EMAIL ID */}
-          <Box mt="4" w="full">
-            <Text mb="4">Enter Your Email</Text>
+          <Box w="full">
+            <Text mb="2">Enter Your Email:</Text>
             <Input
               placeholder="Email"
               type="email"
@@ -219,8 +262,8 @@ const LoginPage = () => {
           </Box>
 
           {/* PASSWORD */}
-          <Box mt="2" w="full">
-            <Text mb="4">Enter Your Password</Text>
+          <Box w="full">
+            <Text mb="2">Enter Your Password:</Text>
             <InputGroup size="md">
               <Input
                 placeholder="Password"
@@ -244,7 +287,6 @@ const LoginPage = () => {
 
           {/* LOGIN BUTTON */}
           <Button
-            mt="3"
             type="submit"
             bgColor="blue.500"
             color="white"
@@ -255,7 +297,7 @@ const LoginPage = () => {
           </Button>
         </VStack>
 
-        <Box textAlign="center" mt="auto">
+        <Box textAlign="center" mt="auto" marginTop="2">
           <Text mb="2" textColor="red" textDecor="bold">
             Dont have an Account?{" "}
           </Text>
