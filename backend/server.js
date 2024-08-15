@@ -1,28 +1,34 @@
 import colors from "colors";
 import dotenv from "dotenv";
 import express from "express";
-import cors from "cors";
 
 import connectDB from "./config/db.js";
 // import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
+import cors from "cors";
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
-
 app.use(express.json());
-app.use(cors()); // Enable CORS for all routes and origins
 
 // OR to restrict it to a specific origin
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//   })
+// );
+
+const corsOptions = {
+  origin: "http://localhost:5173", // Replace with your Netlify URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Allow cookies if needed
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions)); // Enable CORS for all routes and origins
 
 app.get("/", (req, res) => {
   res.send("API is running, authentication soon.....");

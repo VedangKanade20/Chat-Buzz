@@ -203,7 +203,7 @@ const LoginPage = () => {
           withCredentials: true,
         }
       );
-      navigate("/");
+      navigate("/chat");
       dispatch(setAuthUser(res.data));
     } catch (err) {
       toast.error(err.response.data.message); // Log the server error response

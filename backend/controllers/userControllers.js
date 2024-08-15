@@ -165,21 +165,16 @@ const searchUser = async (req, res) => {
  * @route   GET /api/users
  * @access  Private
  */
-const getUsersToChatWith = asyncHandler(async (req, res) => {
-  const loggedInUserId = req.user._id;
-
-  // Find all users except the logged-in user
-  const users = await User.find({ _id: { $ne: loggedInUserId } }).select(
-    "-password"
-  );
-
-  res.status(200).json(users);
+const getOtherUsers = asyncHandler(async (req, res) => {
+  try {
+    const loggedInUserId = req.id;
+    const otherUsers = await User.find({ _id: { $ne: loggedInUserId } }).select(
+      "-password"
+    );
+    return res.status(200).json(otherUsers).message("nay bhai, working ahe");
+  } catch (error) {
+    console.log("me pan error");
+  }
 });
 
-export {
-  authUser,
-  getUserProfile,
-  registerUser,
-  searchUser,
-  getUsersToChatWith,
-};
+export { authUser, getUserProfile, registerUser, searchUser, getOtherUsers };
