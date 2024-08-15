@@ -167,7 +167,6 @@ import {
   Button,
   VStack,
   Heading,
-  Spacer,
   InputGroup,
   InputRightElement,
   IconButton,

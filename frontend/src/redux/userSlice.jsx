@@ -6,8 +6,8 @@ const userSlice = createSlice({
     authUser: null,
     otherUsers: [],
     selectedUser: null,
-    status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
-    error: null,
+    // status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
+    // error: null,
   },
   reducers: {
     setAuthUser: (state, action) => {
