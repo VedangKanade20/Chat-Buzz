@@ -167,13 +167,13 @@ const searchUser = async (req, res) => {
  */
 const getOtherUsers = asyncHandler(async (req, res) => {
   try {
-    const loggedInUserId = req.id;
+    const loggedInUserId = req.user._id;
     const otherUsers = await User.find({ _id: { $ne: loggedInUserId } }).select(
       "-password"
     );
-    return res.status(200).json(otherUsers).message("nay bhai, working ahe");
+    return res.status(200).json(otherUsers);
   } catch (error) {
-    console.log("me pan error");
+    console.log(error);
   }
 });
 

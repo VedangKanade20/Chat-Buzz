@@ -18,7 +18,7 @@
     "@emotion/styled": "^11.11.5",
     "@lottiefiles/lottie-player": "^2.0.4",
     "@reduxjs/toolkit": "^2.2.6",
-    "axios": "^1.7.2",
+    "axios": "^1.7.4",
     "cors": "^2.8.5",
     "framer-motion": "^11.2.10",
     "react": "^18.2.0",
