@@ -3,12 +3,11 @@ import useGetOtherUsers from "../hooks/useGetOtherUsers";
 import { Flex, Text } from "@chakra-ui/react";
 
 const ListOfUsers = () => {
-  // Fetch users using the custom hook
-  useGetOtherUsers();
-
   // Access the users from the Redux store
   const otherUsers = useSelector((store) => store.user.otherUsers);
+  // Fetch users using the custom hook
 
+  useGetOtherUsers();
   // Early return if no users are found
   if (otherUsers.length === 0) return <Text>No users found</Text>;
 
