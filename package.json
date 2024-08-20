@@ -17,6 +17,7 @@
   "author": "Vedang Kanade",
   "license": "ISC",
   "dependencies": {
+    "@redux-devtools/extension": "^3.3.0",
     "axios": "^1.7.4",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",

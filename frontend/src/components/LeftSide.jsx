@@ -20,7 +20,9 @@ const LeftSide = () => {
       <Header />
       <Box gap="15px" overflowY="auto">
         {/* call other users here like not hook but the users  */}
-        <ListOfUsers />
+        <Box w="100">
+          <ListOfUsers />
+        </Box>
       </Box>
     </Flex>
   );
