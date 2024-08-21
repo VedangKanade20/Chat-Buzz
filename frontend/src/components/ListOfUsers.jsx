@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import useGetOtherUsers from "../hooks/useGetOtherUsers";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, Image } from "@chakra-ui/react";
 
 const ListOfUsers = () => {
   // Access the users from the Redux store
@@ -15,13 +15,13 @@ const ListOfUsers = () => {
   return (
     <Flex direction="column">
       {otherUsers.map((user) => (
-        <Box
+        <Flex
           key={user._id}
           w="18vw"
           h="10vh"
           borderStyle="dashed"
           mb="2"
-          textAlign="left"
+          textAlign="center"
           fontSize="20px"
           _hover={{
             backgroundColor: "violet", // Change background color on hover
@@ -29,9 +29,26 @@ const ListOfUsers = () => {
           }}
           borderRadius="10px"
           bgColor="black"
+          flexDirection="row"
         >
-          <Text ml="10px">{user?.username}</Text>
-        </Box>
+          <Image
+            src={user?.picture}
+            alt={`${user?.username}'s profile picture`}
+            boxSize="40px"
+            borderRadius="full"
+            mr="10px"
+            w="50px"
+            h="7vh"
+            mt="10px"
+            ml="10px"
+          />
+          <Text ml="10px" mt="15px">
+            {user?.firstName}
+          </Text>
+          <Text ml="10px" mt="15px">
+            {user?.lastName}
+          </Text>
+        </Flex>
       ))}
     </Flex>
   );

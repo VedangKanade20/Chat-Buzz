@@ -56,10 +56,21 @@ const LeftSide = () => {
           </Box>
         </Box>
         <Flex w="100" h="10vh" direction="row" gap="90px">
-          <Link to="#" onClick={handleLogout}>
+          <Link
+            to="#"
+            onClick={handleLogout}
+            style={{ position: "relative", textDecoration: "none" }}
+            title="Logout"
+          >
             <FaPowerOff size="25" />
           </Link>
-          <FaRegCircleUser size="25" cursor="pointer" onClick={onOpen} />
+          <FaRegCircleUser
+            style={{ position: "relative", textDecoration: "none" }}
+            title="Profile"
+            size="25"
+            cursor="pointer"
+            onClick={onOpen}
+          />
         </Flex>
       </Flex>
 
