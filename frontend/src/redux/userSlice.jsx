@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// const userInfoFromStorage = localStorage.authUser;
 const userSlice = createSlice({
   name: "username",
   initialState: {
     authUser: null,
     otherUsers: [],
     selectedUser: null,
+    // logout: userInfoFromStorage,
     // status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
     // error: null,
   },
@@ -19,9 +21,13 @@ const userSlice = createSlice({
     setSelectedUser: (state, action) => {
       state.selectedUser = action.payload;
     },
+    logout: (state) => {
+      state.authUser = null; // Clear the authUser state
+      // localStorage.removeItem("userInfo"); // Remove user info from localStorage
+    },
   },
 });
 
-export const { setAuthUser, setOtherUsers, setSelectedUser } =
+export const { setAuthUser, setOtherUsers, setSelectedUser, logout } =
   userSlice.actions;
 export default userSlice.reducer;

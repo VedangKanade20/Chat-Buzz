@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import axios from "axios";
 import { setAuthUser } from "../redux/userSlice";
 import {
@@ -44,7 +44,7 @@ const LoginPage = () => {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${res.data.token}`,
+            // Authorization: `Bearer ${res.token}`,
           },
           withCredentials: true,
         }
@@ -53,7 +53,7 @@ const LoginPage = () => {
       dispatch(setAuthUser(res.data));
       localStorage.setItem(res.data.token);
     } catch (err) {
-      toast.error(err.response.data.message); // Log the server error response
+      // toast.error(err.response.data.message); // Log the server error response
       console.log(err);
     }
 
