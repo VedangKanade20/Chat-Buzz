@@ -15,12 +15,6 @@ connectDB();
 const app = express();
 app.use(express.json());
 
-// OR to restrict it to a specific origin
-// app.use(
-//   cors({
-//     origin: "http://localhost:5173",
-//   })
-// );
 
 const corsOptions = {
   origin: "http://localhost:5173", // Replace with your Netlify URL

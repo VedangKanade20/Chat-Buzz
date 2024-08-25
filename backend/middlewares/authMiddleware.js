@@ -14,13 +14,15 @@ const protect = asyncHandler(async (req, res, next) => {
       token = req.headers.authorization.split(" ")[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = await User.findById(decoded.id).select("-password");
-      console.log(req.user);
+      console.log("User authenticated:", req.user);
       next();
     } catch (err) {
       console.log(err);
+      res.status(401);
       throw new Error("Not authorized, token failed");
     }
   } else {
+    res.status(401);
     throw new Error("No token found");
   }
 });
