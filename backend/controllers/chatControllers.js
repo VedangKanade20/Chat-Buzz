@@ -90,9 +90,9 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
     const senderId = req.user._id;
     const receiverId = req.params.id;
     const { message } = req.body;
-    console.log("Request received");
-    console.log("Sender ID:", req.user._id);
-    console.log("Receiver ID:", req.params.id);
+    // console.log("Request received");
+    // console.log("Sender ID:", req.user._id);
+    // console.log("Receiver ID:", req.params.id);
 
     let existingChat = await Chat.findOne({
       members: { $all: [senderId, receiverId] },

@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
-import User from "./userModel.js";
 
 const chatSchema = mongoose.Schema(
   {
     members: {
       type: Array,
-      ref: User,
+      ref: "User",
       required: true,
     },
     chats: [
