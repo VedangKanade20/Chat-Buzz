@@ -108,26 +108,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-/**
- * @desc  Search a user
- * @route GET api/users/
- * @access  public*/ //THIS IS OUR CODE
-/* const searchUser = asyncHandler(async (req, res) => {
-  const { email } = req.body;
-  const user = await User.findOne({ email });
 
-  if (user) {
-    res.json({
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-      picture: user.picture,
-    });
-  } else {
-    res.status(404);
-    throw new Error("User not found");
-  }
-}); */
 
 /**
  * @desc  Search a user
