@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 const chatSchema = mongoose.Schema(
   {
     members: {
-      type: Array,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      // required: true,
     },
     chats: [
       {

@@ -16,6 +16,7 @@ const importData = async () => {
   try {
     await User.deleteMany();
     await Chat.deleteMany();
+    await Message.deleteMany();
 
     const createdUser = await User.insertMany(users);
 
@@ -35,6 +36,7 @@ const destroyData = async () => {
   try {
     await User.deleteMany();
     await Chat.deleteMany();
+    await Message.deleteMany();
 
     console.log("Data destroyed".red.inverse);
     process.exit();

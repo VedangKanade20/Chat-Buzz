@@ -48,27 +48,28 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
 
 /**
  *@desc   Show chats
- *@route   GET api/chats
+ *@route   GET api/chats/:id
  *@access    private*/
 const getMessage = asyncHandler(async (req, res) => {
-  console.log("Get message called with params:", req.params);
+  // console.log(req.params);
+  // console.log(req.user);
   try {
-    const receiverId = req.params.id; // Ensure your route is defined as /api/chat/:id
+    const receiverId = req.params.id;
     const senderId = req.user._id;
 
     // Find the chat between the sender and receiver
     const connection = await Chat.findOne({
       members: { $all: [senderId, receiverId] },
-    }).populate(messages);
+    });
+    console.log(connection);
 
-    if (!connection) {
-      return res
-        .status(404)
-        .json({ message: "No chat found, start your conversation" });
-      //if no chat is found
-    } else {
-      return res.status(200).json(connection.messages);
-    }
+    // if (!connection) {
+    //   return res
+    //     .status(404)
+    //     .json({ message: "No chat found, start your conversation" });
+    // } else {
+    //   return res.status(200).json(connection.messages);
+    // }
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal Server Error" });
