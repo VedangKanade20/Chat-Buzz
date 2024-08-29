@@ -35,8 +35,10 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
     if (newMessage) {
       existingChat.chats.push(newMessage._id);
     }
+    await existingChat.save();
+    await newMessage.save();
 
-    await Promise.all([existingChat.save(), newMessage.save()]);
+    // await Promise.all([existingChat.save(), newMessage.save()]);
 
     return res.status(201).json({
       message: "Message send successfully",
@@ -52,7 +54,7 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
  *@access    private*/
 const getMessage = asyncHandler(async (req, res) => {
   // console.log(req.params);
-  // console.log(req.user);
+  console.log(req.user);
   try {
     const receiverId = req.params.id;
     const senderId = req.user._id;
@@ -63,13 +65,15 @@ const getMessage = asyncHandler(async (req, res) => {
     });
     console.log(connection);
 
-    // if (!connection) {
-    //   return res
-    //     .status(404)
-    //     .json({ message: "No chat found, start your conversation" });
-    // } else {
-    //   return res.status(200).json(connection.messages);
-    // }
+    // small bug left at get chats 
+
+    if (!connection) {
+      return res
+        .status(404)
+        .json({ message: "No chat found, start your conversation" });
+    } else {
+      return res.status(200).json(connection.messages);
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Internal Server Error" });
