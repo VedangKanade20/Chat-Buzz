@@ -53,8 +53,8 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
  *@route   GET api/chats/:id
  *@access    private*/
 const getMessage = asyncHandler(async (req, res) => {
-  // console.log(req.params);
-  console.log(req.user);
+  console.log(req.params?.id);
+  console.log(req.user?._id);
   try {
     const receiverId = req.params.id;
     const senderId = req.user._id;
@@ -65,7 +65,7 @@ const getMessage = asyncHandler(async (req, res) => {
     });
     console.log(connection);
 
-    // small bug left at get chats 
+    // small bug left at get chats
 
     if (!connection) {
       return res
