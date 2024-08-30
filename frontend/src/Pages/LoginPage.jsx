@@ -51,7 +51,7 @@ const LoginPage = () => {
       );
       navigate("/chat");
       dispatch(setAuthUser(res.data));
-      localStorage.setItem(res.data.token);
+      localStorage.setItem("token", res.data.token);
     } catch (err) {
       // toast.error(err.response.data.message); // Log the server error response
       console.log(err);

@@ -7,6 +7,7 @@ import WelcomePage from "./Pages/Welcome";
 import { Flex } from "@chakra-ui/react";
 import RegisterPage from "./Pages/RegisterPage";
 
+
 const App = () => {
   return (
     <>

@@ -11,7 +11,6 @@ const useGetOtherUsers = () => {
       try {
         // Retrieve the token from localStorage
         const token = localStorage.getItem("token");
-
         const res = await axios.get(
           `http://localhost:8080/api/users/usersList/`,
           {

@@ -11,7 +11,9 @@ const OtherUser = ({ user }) => {
 
   const selectedUserHandler = () => {
     dispatch(setSelectedUser(user));
+    console.log("Selected User Updated: ", user);
   };
+  // console.log("Current selectedUser: ", selectedUser);
 
   return (
     <>
