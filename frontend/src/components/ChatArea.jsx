@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import OtherUser from "./OtherUser";
+// import OtherUser from "./OtherUser";
 
 const ChatArea = () => {
   return (
@@ -12,7 +12,7 @@ const ChatArea = () => {
       gap="5px"
       backgroundColor="gray.900"
     >
-      chat area 
+      This is chat section
     </Flex>
   );
 };
