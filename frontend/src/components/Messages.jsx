@@ -8,7 +8,7 @@ const Messages = () => {
   useGetRealTimeMessages();
   useGetMessages();
 
-  const { messages } = useSelector((store) => store.message);
+  const { messages } = useSelector((store) => store.messages);
   return (
     <Flex overflow="auto" px={4} flex="1">
       {messages &&

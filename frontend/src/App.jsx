@@ -1,11 +1,5 @@
 // import { Flex } from "@chakra-ui/react";
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage";
 import "./App.css";
 import ChatPage from "./Pages/ChatPage";
@@ -44,7 +38,7 @@ function App() {
 
   useEffect(() => {
     if (authUser) {
-      const socketio = io("htto://localhost:8080", {
+      const socketio = io("http://localhost:8080", {
         query: {
           userId: authUser._id,
         },

@@ -10,7 +10,7 @@ const SendInput = () => {
   const dispatch = useDispatch();
 
   const { selectedUser } = useSelector((store) => store.user);
-  const { messages } = useSelector((store) => store.message);
+  const { messages } = useSelector((store) => store.messages);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault;

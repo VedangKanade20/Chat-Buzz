@@ -35,7 +35,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
-  message: messageReducer,
+  messages: messageReducer,
   socket: socketReducer,
 });
 
