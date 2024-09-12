@@ -15,6 +15,7 @@ const ChatArea = () => {
           direction="column"
           minWidth={{ base: "100%", md: "550px" }}
           flexGrow={1}
+          height="60vh"
         >
           {/* User info section */}
           <Flex
@@ -26,13 +27,14 @@ const ChatArea = () => {
             px={2}
             py={2}
             mb={2}
+            h="10vh"
           >
             <Avatar
               src={selectedUser?.picture}
               size="md"
               name={selectedUser?.username}
             />
-            <Flex direction="column" flex={1}>
+            <Flex direction="column" flex={1} h="10vh" alignContent="center">
               <Text fontWeight="semibold" fontFamily="sans-serif">
                 {selectedUser.username}
               </Text>
@@ -49,6 +51,7 @@ const ChatArea = () => {
           justify="center"
           align="center"
           textAlign="center"
+          h="60vh"
         >
           <Heading as="h1" size="xl" color="white" fontWeight="bold">
             {authUser?.username}
