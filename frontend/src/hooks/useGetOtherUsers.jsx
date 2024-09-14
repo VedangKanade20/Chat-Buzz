@@ -24,13 +24,6 @@ const useGetOtherUsers = () => {
         // Store the data in Redux
         console.log("Other users->", res.data);
         dispatch(setOtherUsers(res.data));
-
-        // Optionally update the token if needed
-
-        // const newToken = res.data.token;
-        // if (newToken) {
-        //   localStorage.setItem("token", newToken);
-        // }
       } catch (err) {
         console.log(
           "Error fetching other users:",

@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Avatar, Text, Flex, Heading } from "@chakra-ui/react";
 import Messages from "./Messages";
 import SendInput from "./SendInput";
