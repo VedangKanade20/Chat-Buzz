@@ -22,7 +22,7 @@ const useGetMessages = () => {
       }
     };
     fetchMessages();
-  }, [dispatch, selectedUser]);
+  }, [selectedUser?._id, setMessages]);
 };
 
 export default useGetMessages;

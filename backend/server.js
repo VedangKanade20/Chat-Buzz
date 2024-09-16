@@ -1,6 +1,7 @@
 import colors from "colors";
 import dotenv from "dotenv";
 import express from "express";
+import cookieParser from "cookie-parser";
 
 import connectDB from "./config/db.js";
 // import { errorHandler, notFound } from "./middlewares/errorMiddleware.js";
@@ -14,7 +15,8 @@ connectDB();
 
 const app = express();
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 const corsOptions = {
   origin: "http://localhost:5173", // Replace with your Netlify URL

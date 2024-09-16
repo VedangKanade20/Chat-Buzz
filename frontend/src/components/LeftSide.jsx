@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/userSlice";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { setAuthUser } from "../redux/userSlice.jsx";
+import { useEffect } from "react";
 
 const LeftSide = () => {
   const dispatch = useDispatch();
@@ -32,12 +33,16 @@ const LeftSide = () => {
 
   const userInfo = useSelector((state) => state.user.authUser);
 
+  useEffect(() => {
+    if (userInfo) {
+      dispatch(setAuthUser(userInfo));
+    }
+  }, [userInfo, dispatch]);
+
   const handleLogout = async () => {
     dispatch(logout()); // Dispatch the logout action
     navigate("/login");
   };
-
-  dispatch(setAuthUser(userInfo));
 
   return (
     <>

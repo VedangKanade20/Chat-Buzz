@@ -27,12 +27,12 @@ io.on("connection", (socket) => {
     userSocketMap[userId] = socket.id;
   }
 
-  io.emit("getUsers", Object.keys(userSocketMap));
+  io.emit("getOtherUsers", Object.keys(userSocketMap));
 
   socket.on("disconnect", () => {
     // console.log("user disconnected", socket.userId);
     delete userSocketMap[userId];
-    io.emit("getUsers", Object.keys(userSocketMap));
+    io.emit("getOtherUsers", Object.keys(userSocketMap));
   });
 });
 
