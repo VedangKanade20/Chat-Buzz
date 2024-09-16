@@ -87,6 +87,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         ignoredPaths: ["socket.socket"], // Ignore serializability check for socket state
+        // blacklist: ["socket"],
       },
     }),
 });
