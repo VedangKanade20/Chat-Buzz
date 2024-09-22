@@ -99,7 +99,7 @@ function App() {
   useEffect(() => {
     let socketio;
 
-    // Only create the socket connection if the user is authenticated
+ 
     if (authUser) {
       socketio = io("http://localhost:8080", {
         query: {
@@ -107,20 +107,19 @@ function App() {
         },
       });
 
-      // Dispatch the socket instance to the Redux store
+      
       dispatch(setSocket(socketio));
 
-      // Listen for the "setOtherUsers" event and update the Redux store
       socketio.on("setOtherUsers", (otherUsers) => {
         dispatch(setOtherUsers(otherUsers));
       });
     }
 
-    // Clean up the socket connection when the component unmounts or authUser changes
+    
     return () => {
       if (socket) {
-        socketio.close(); // Ensure that the socket connection is closed
-        dispatch(setSocket(null)); // Clear the socket from Redux store
+        socketio.close(); 
+        dispatch(setSocket(null)); 
       }
     };
   }, [authUser, dispatch]);

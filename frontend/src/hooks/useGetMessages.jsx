@@ -10,10 +10,11 @@ const useGetMessages = () => {
 
   useEffect(() => {
     const fetchMessages = async () => {
+      if (!selectedUser?._id) return;
       try {
         axios.defaults.withCredentials = true;
         const res = await axios.get(
-          `http://localhost:8080/api/chats/${selectedUser?._id}`
+          `http://localhost:8080/api/chats/${selectedUser._id}`
         );
         console.log(res);
         dispatch(setMessages(res.data));
@@ -22,7 +23,7 @@ const useGetMessages = () => {
       }
     };
     fetchMessages();
-  }, [selectedUser?._id, setMessages]);
+  }, [selectedUser, dispatch]);
 };
 
 export default useGetMessages;
