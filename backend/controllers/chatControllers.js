@@ -41,7 +41,8 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
     // await Promise.all([existingChat.save(), newMessage.save()]);
 
     return res.status(201).json({
-      message: "Message send successfully",
+      message: "Message sent successfully",
+      chatId: existingChat._id,
     });
   } catch (err) {
     console.log(err);
@@ -59,20 +60,19 @@ const getMessage = asyncHandler(async (req, res) => {
     const receiverId = req.params.id;
     const senderId = req.user._id;
 
-    // Find the chat between the sender and receiver
+    // Find the chat between the sender and receiver and populate the messages
     const connection = await Chat.findOne({
       members: { $all: [senderId, receiverId] },
-    });
-    console.log(connection);
+    }).populate("chats"); // Assuming 'chats' is the field storing message IDs
 
-    // small bug left at get chats
+    console.log(connection);
 
     if (!connection) {
       return res
         .status(404)
         .json({ message: "No chat found, start your conversation" });
     } else {
-      return res.status(200).json(connection.messages);
+      return res.status(200).json(connection.chats); // Return the populated messages
     }
   } catch (err) {
     console.error(err);
