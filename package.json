@@ -4,7 +4,7 @@
   "description": "An api for chat app.",
   "main": "server.js",
   "type": "module",
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:8070",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon backend/server",
@@ -29,7 +29,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.4",
     "react-router-dom": "^6.25.1",
-    "socket.io": "^4.7.5",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
     "validator": "^13.12.0"
   },
   "devDependencies": {

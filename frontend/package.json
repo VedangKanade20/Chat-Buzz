@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "proxy": "http://127.0.0.1:8080",
+  "proxy": "http://127.0.0.1:8070",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -32,7 +32,8 @@
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^3.1.0",
-    "socket.io-client": "^4.7.5"
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

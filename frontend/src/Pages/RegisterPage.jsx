@@ -41,9 +41,9 @@ const RegisterPage = () => {
         formData.append(key, user[key]);
       });
       const res = await axios.post(
-        `http://localhost:8080/api/users/register`,
+        `http://localhost:8070/api/users/register`,
         user,
-        formData, 
+        formData,
         {
           headers: {
             "Content-Type": "application/json",

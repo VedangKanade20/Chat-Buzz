@@ -17,7 +17,7 @@ const SendInput = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/chats/send/${selectedUser?._id}`,
+        `http://localhost:8070/api/chats/send/${selectedUser?._id}`,
         { message },
         {
           headers: {
