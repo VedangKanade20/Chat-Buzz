@@ -36,7 +36,7 @@ app.use("/api/chats", chatRoutes);
 // app.use(notFound);
 // app.use(errorHandler);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7000;
 
 app.listen(PORT, () => {
   console.log(
