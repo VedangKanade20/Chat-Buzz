@@ -13,7 +13,7 @@ const Messages = () => {
     <Flex overflow="auto" px={4} flex="1">
       {messages &&
         messages.map((message) => {
-          return <Message key={message._id} message={message} />;
+          return <Message key={message._id || "No message available"} message={message} />;
         })}
     </Flex>
   );

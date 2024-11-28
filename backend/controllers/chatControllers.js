@@ -60,7 +60,6 @@ const getMessage = asyncHandler(async (req, res) => {
     const receiverId = req.params.id;
     const senderId = req.user._id;
 
-    // Find the chat between the sender and receiver and populate the messages
     const connection = await Chat.findOne({
       members: { $all: [senderId, receiverId] },
     }).populate("chats"); // Assuming 'chats' is the field storing message IDs
@@ -72,7 +71,7 @@ const getMessage = asyncHandler(async (req, res) => {
         .status(404)
         .json({ message: "No chat found, start your conversation" });
     } else {
-      return res.status(200).json(connection.chats); // Return the populated messages
+      return res.status(200).json(connection.chats); 
     }
   } catch (err) {
     console.error(err);

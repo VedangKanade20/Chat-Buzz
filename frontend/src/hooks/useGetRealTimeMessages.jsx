@@ -5,9 +5,7 @@ import { setMessages } from "../redux/messageSlice";
 
 const useGetRealTimeMessages = () => {
   const { socket } = useSelector((store) => store.socket);
-  const { messages } = useSelector(
-    (store) => store.messages /* || { messages: [] } */
-  );
+  const { messages } = useSelector((store) => store.messages);
   const dispatch = useDispatch();
 
   useEffect(() => {

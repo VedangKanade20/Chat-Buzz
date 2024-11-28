@@ -5,31 +5,31 @@ import { setMessages } from "../redux/messageSlice";
 
 const useGetMessages = () => {
   const { selectedUser } = useSelector((store) => store.user);
-  const { authUser } = useSelector((store) => store.user); // Assuming authUser contains the token
+  const { authUser } = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchMessages = async () => {
-      if (!selectedUser?._id || !authUser?.token) return; // Ensure token and user exist
+      // if (!selectedUser?._id || !authUser?.token) return; // Ensure token and user exist
 
       try {
         const res = await axios.get(
           `http://localhost:8070/api/chats/${selectedUser?._id}`,
           {
             headers: {
-              Authorization: `Bearer ${authUser.token}`, // Add the token to the Authorization header
+              Authorization: `Bearer ${authUser.token}`,
             },
-            withCredentials: true, // Ensure credentials are sent if needed
+            withCredentials: true,
           }
         );
-        console.log(res.data);
-        dispatch(setMessages(res.data));
+        console.log(selectedUser, "This is user selected");
+        console.log(res);
+        dispatch(setMessages(res.data || "No message available"));
       } catch (err) {
         console.log(err);
       }
     };
-
     fetchMessages();
   }, [selectedUser, authUser, dispatch]);
 };

@@ -30,16 +30,17 @@ const Message = (message) => {
           mr="2"
         />
         <Text fontSize="s" opacity="0.5" color="white">
-        12:45
+          12:45
         </Text>
       </Flex>
-      <Box bg={message?.senderId !== authUser?._id ? "gray.200" : "blue.500" }
-      color={message?.senderId !== authUser?._id ? "black" : "white"}
-      borderRadius="lg"
-      p={3}
-      maxW="80%"
+      <Box
+        bg={message?.senderId !== authUser?._id ? "gray.200" : "blue.500"}
+        color={message?.senderId !== authUser?._id ? "black" : "white"}
+        borderRadius="lg"
+        p={3}
+        maxW="80%"
       >
-        {message?.message}
+        {message?.message || "No message available"}
       </Box>
     </Flex>
   );
