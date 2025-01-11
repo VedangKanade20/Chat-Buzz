@@ -44,7 +44,7 @@ function App() {
         console.log("New client connected:", socket.id);
       });
 
-      // Clean up the socket connection when the user logs out or component unmounts
+     
       return () => socketio.close();
     } else {
       if (socket) {

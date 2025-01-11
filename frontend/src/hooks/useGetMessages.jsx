@@ -11,11 +11,12 @@ const useGetMessages = () => {
 
   useEffect(() => {
     const fetchMessages = async () => {
-      // if (!selectedUser?._id || !authUser?.token) return; // Ensure token and user exist
+      if (!selectedUser?._id || !authUser?.token) return; // Ensure token and user exist
 
       try {
         const res = await axios.get(
-          `http://localhost:8070/api/chats/${selectedUser?._id}`,
+          `http://localhost:8070/api/chats/${selectedUser_id}`,
+
           {
             headers: {
               Authorization: `Bearer ${authUser.token}`,
@@ -24,13 +25,14 @@ const useGetMessages = () => {
           }
         );
         console.log(selectedUser, "This is user selected");
-        console.log(res);
+        console.log("Fetched Messages:", res.data);
         dispatch(setMessages(res.data || "No message available"));
       } catch (err) {
         console.log(err);
       }
     };
     fetchMessages();
+    console.log("hi");
   }, [selectedUser, authUser, dispatch]);
 };
 
