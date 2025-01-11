@@ -1,58 +1,58 @@
-import express from "express";
 import http from "http";
 import { Server } from "socket.io";
+import express from "express";
 
-const app = express();
-
-const server = http.createServer(app);
-
-
+const app = express(); // Initialize express app
+const server = http.createServer(app); // Create HTTP server
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173"],
-    methods: ["GET", "POST"], 
+    origin: ["http://localhost:5173"], // Allow client origin
+    methods: ["GET", "POST"],
   },
 });
 
-// A map to track userId -> socketId associations
+// User-Socket Mapping
 const userSocketMap = {};
 
-
+// Export function to get a receiver's socket ID
 export const getReceiverSocketId = (receiverId) => {
   return userSocketMap[receiverId];
 };
 
-
+// Socket.IO Connection
 io.on("connection", (socket) => {
   console.log("User Connected", socket.id);
 
-  // Extract userId from the query string
-  const userId = socket.handshake.query.userId;
+  const userId = socket.handshake.query.userId; // Get userId from handshake query
 
-  // If the userId exists, store it in the userSocketMap
   if (userId) {
-    userSocketMap[userId] = socket.id;
+    userSocketMap[userId] = socket.id; // Map userId to socketId
     console.log(`User ${userId} is now mapped to socket ${socket.id}`);
   } else {
     console.log("No userId found in socket handshake");
   }
 
-  // Emit the list of all connected users (excluding the current socket)
+  // Emit all connected users to the frontend
   io.emit("getOtherUsers", Object.keys(userSocketMap));
 
-  // Handle the user disconnecting
+  // Listen for messages and send to a specific user
+  socket.on("sendMessage", ({ receiverId, message }) => {
+    const receiverSocketId = getReceiverSocketId(receiverId); // Get receiver's socket ID
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", { message, senderId: userId });
+    }
+  });
+
+  // Handle user disconnect
   socket.on("disconnect", () => {
     console.log(`User ${userId} disconnected`);
-
-    // Remove the user's socketId from the map
     if (userId) {
-      delete userSocketMap[userId];
+      delete userSocketMap[userId]; // Remove user from map
       console.log(`Removed user ${userId} from userSocketMap`);
     }
-
-    // Emit the updated list of connected users
-    io.emit("getOtherUsers", Object.keys(userSocketMap));
+    io.emit("getOtherUsers", Object.keys(userSocketMap)); // Broadcast updated user list
   });
 });
 
-export { app, io, server };
+// Export app and server
+export { app, server };
