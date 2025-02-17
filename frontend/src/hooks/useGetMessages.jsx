@@ -15,7 +15,7 @@ const useGetMessages = () => {
 
       try {
         const res = await axios.get(
-          `http://localhost:8070/api/chats/${selectedUser_id}`,
+          `http://localhost:8070/api/chats/${selectedUser._id}`,
 
           {
             headers: {
@@ -32,7 +32,6 @@ const useGetMessages = () => {
       }
     };
     fetchMessages();
-    console.log("hi");
   }, [selectedUser, authUser, dispatch]);
 };
 

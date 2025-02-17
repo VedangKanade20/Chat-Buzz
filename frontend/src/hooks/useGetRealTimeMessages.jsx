@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setMessages } from "../redux/messageSlice";
+import socket from "../socket"; // Import the singleton socket
 
 const useGetRealTimeMessages = () => {
   const { socket } = useSelector((store) => store.socket);
