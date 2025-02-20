@@ -46,7 +46,7 @@ import { io } from "socket.io-client"; // Make sure you imported this
 const useGetRealTimeMessages = () => {
   const dispatch = useDispatch();
 
-  // ✅ Corrected the useSelector calls to use `store.user`
+  
   const { authUser, selectedUser } = useSelector((store) => store.user);
   const { messages } = useSelector((store) => store.messages);
 
@@ -67,6 +67,7 @@ const useGetRealTimeMessages = () => {
     socket.on("newMessage", (newMessage) => {
       console.log("Received Real-Time Message:", newMessage);
       dispatch(setMessages([...messages, newMessage])); // Update Redux store
+      console.log("Fetched messages:", response.data);
     });
 
     return () => {

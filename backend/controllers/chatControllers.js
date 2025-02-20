@@ -40,6 +40,9 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
     await existingChat.save();
     await newMessage.save();
 
+    console.log("New Message Created:", newMessage); // ✅ Log new message
+    console.log("Updated Chat:", existingChat); // ✅ Log updated chat
+
     return res.status(201).json({
       message: "Message sent successfully",
       chatId: existingChat._id,
@@ -62,9 +65,8 @@ const getMessage = asyncHandler(async (req, res) => {
 
     let existingChat = await Chat.findOne({
       members: { $all: [senderId, receiverId] },
-    }).populate("chats"); // Populate messages
+    }).populate("chats");
 
-    // If no chat exists, create an empty chat and return it
     if (!existingChat) {
       existingChat = await Chat.create({
         members: [senderId, receiverId],
@@ -72,6 +74,7 @@ const getMessage = asyncHandler(async (req, res) => {
       });
     }
 
+    console.log("Fetched messages:", existingChat.chats);
     return res.status(200).json(existingChat.chats);
   } catch (err) {
     console.error("Error in getMessage:", err);

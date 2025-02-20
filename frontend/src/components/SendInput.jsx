@@ -12,22 +12,32 @@ const SendInput = () => {
   const { selectedUser } = useSelector((store) => store.user);
   const { messages } = useSelector((store) => store.messages);
 
+  const token = localStorage.getItem("token");
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
 
     try {
+      console.log("Auth Token:", token);
+
       const res = await axios.post(
         `http://localhost:8070/api/chats/send/${selectedUser?._id}`,
         { message },
         {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           withCredentials: true,
         }
       );
-
+      console.log("Auth Token:", token);
       console.log("New Message Sent:", res.data);
+      if (res.data.newMessage) {
+        dispatch(setMessages([...messages, res.data.newMessage]));
+      } else {
+        console.error("Received undefined message from backend:", res.data);
+      }
 
       dispatch(setMessages([...messages, res.data.newMessage])); // Add new message
     } catch (err) {

@@ -67,6 +67,7 @@ const useGetMessages = () => {
       }
     };
     fetchMessages();
+    
   }, [selectedUser, authUser, dispatch]);
 };
 
