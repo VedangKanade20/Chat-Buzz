@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
-import Chat from "./chatModel.js";
 
 const messageSchema = mongoose.Schema(
   {
+    chatId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Chat",
+      required: true, // ✅ This ensures messages belong to a specific chat
+    },
     senderId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
@@ -20,5 +24,6 @@ const messageSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
+
 const Message = mongoose.model("Message", messageSchema);
 export default Message;
