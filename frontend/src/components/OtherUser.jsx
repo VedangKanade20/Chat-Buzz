@@ -1,61 +1,49 @@
-/* eslint-disable react/prop-types */
-
+import React, { useCallback } from "react";
 import { Flex, Text, Box, Image } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUser } from "../redux/userSlice";
 
-const OtherUser = ({ user }) => {
-  // Destructure user prop
+const OtherUser = React.memo(({ user }) => {
   const dispatch = useDispatch();
-  const { selectedUser } = useSelector((store) => store.user);
 
-  const selectedUserHandler = () => {
-    dispatch(setSelectedUser(user));
-    console.log("Selected User Updated: ", user);
-  };
-  // console.log("Current selectedUser: ", selectedUser);
+  const selectedUserId = useSelector(
+    (state) => state.user.selectedUser?._id,
+    (prev, next) => prev === next
+  );
+
+  console.log("Rendering User:", user?._id);
+
+  const selectedUserHandler = useCallback(() => {
+    if (selectedUserId !== user?._id) {
+      console.log("Updating selectedUser:", user);
+      dispatch(setSelectedUser(user));
+    }
+  }, [dispatch, selectedUserId, user?._id]); // Only depend on user._id
 
   return (
-    <>
-      <Flex
-        onClick={selectedUserHandler} // Use the function directly
-        w="18vw"
-        h="8vh"
-        justifyContent="space-between"
-        borderRadius="10px"
-        // eslint-disable-next-line react/prop-types
-        bg={selectedUser?._id === user?._id ? "black" : "transparent"}
-        gap="5"
-        textAlign="center"
-        cursor="pointer"
-      >
-        <Box ml="1" w="12" borderRadius="full" overflow="hidden">
-          <Image src={user?.picture} alt="user-profile" />
-        </Box>
-        <Flex direction="row" flex="1" gap="3" mt="3">
-          <Flex justify="space-between" gap="2">
-            <Text
-              fontWeight="semibold"
-              fontFamily="sans-serif"
-              textColor="white"
-            >
-              {user?.firstName}
-            </Text>
-          </Flex>
-          <Flex justify="space-between" gap="2">
-            <Text
-              fontWeight="semibold"
-              fontFamily="sans-serif"
-              textColor="white"
-            >
-              {user?.lastName}
-            </Text>
-          </Flex>
-        </Flex>
+    <Flex
+      onClick={selectedUserHandler}
+      w="18vw"
+      h="8vh"
+      justifyContent="space-between"
+      borderRadius="10px"
+      bg={selectedUserId === user?._id ? "black" : "transparent"}
+      gap="5"
+      textAlign="center"
+      cursor="pointer"
+      transition="background 0.2s ease-in-out"
+      _hover={{ bg: "gray.700" }}
+    >
+      <Box ml="1" w="12" borderRadius="full" overflow="hidden">
+        <Image src={user?.picture} alt="user-profile" />
+      </Box>
+      <Flex direction="row" flex="1" gap="3" mt="3">
+        <Text fontWeight="semibold" fontFamily="sans-serif" textColor="white">
+          {user?.firstName} {user?.lastName}
+        </Text>
       </Flex>
-      <Box borderTop="1px" borderColor="gray.200" my="0" py="0" h="1" />
-    </>
+    </Flex>
   );
-};
+});
 
 export default OtherUser;

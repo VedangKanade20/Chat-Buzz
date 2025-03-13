@@ -1,27 +1,28 @@
 import { useSelector } from "react-redux";
 import { Flex, Text, Input } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import useGetOtherUsers from "../hooks/useGetOtherUsers";
-import OtherUser from "./OtherUser"; // Import the OtherUser component
+import OtherUser from "./OtherUser";
 
 const ListOfUsers = () => {
   const otherUsers = useSelector((store) => store.user.otherUsers);
   const [search, setSearch] = useState("");
 
-  useGetOtherUsers();
+  useGetOtherUsers(); // Move this to a parent component if possible
 
-  // Early return if no users are found
   if (!otherUsers || otherUsers.length === 0)
     return <Text>No users found</Text>;
 
-  // Filter users based on search input
-  const filteredUsers = otherUsers.filter((user) =>
-    user.username.toLowerCase().includes(search.toLowerCase())
+  const filteredUsers = useMemo(
+    () =>
+      otherUsers.filter((user) =>
+        user.username.toLowerCase().includes(search.toLowerCase())
+      ),
+    [otherUsers, search]
   );
 
   return (
     <Flex direction="column">
-      {/* Search input */}
       <Flex direction="row" mb="4">
         <Input
           placeholder="Search users"
@@ -34,9 +35,8 @@ const ListOfUsers = () => {
         />
       </Flex>
 
-      {/* Display filtered users using OtherUser component */}
       {filteredUsers.map((user) => (
-        <OtherUser key={user._id} user={user} /> // Use OtherUser component
+        <OtherUser key={user._id} user={user} />
       ))}
     </Flex>
   );

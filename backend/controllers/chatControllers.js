@@ -40,6 +40,8 @@ const chatOneOnOne = asyncHandler(async (req, res) => {
     await existingChat.save();
 
     return res.status(201).json(newMessage);
+    console.log(res.data);
+    
   } catch (err) {
     console.error("Error in chatOneOnOne:", err);
     res.status(500).json({ message: "Internal Server Error" });

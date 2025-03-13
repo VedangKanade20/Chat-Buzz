@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const messageSlice = createSlice({
-  name: "message",
+  name: "messages", // ✅ Ensure this matches `store.messages`
   initialState: {
     messages: [],
   },
@@ -10,9 +10,8 @@ const messageSlice = createSlice({
       state.messages = action.payload;
     },
     addMessage: (state, action) => {
-      console.log("Received message payload:", action.payload);
       if (!state.messages.some((msg) => msg._id === action.payload._id)) {
-        state.messages.push(action.payload); // Add only unique messages
+        state.messages.push(action.payload);
       }
     },
   },
