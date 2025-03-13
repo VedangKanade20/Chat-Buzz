@@ -110,7 +110,12 @@ const Message = ({ message }) => {
     scroll.current?.scrollIntoView({ behavior: "smooth" });
   }, [message]);
 
+  
   const isSender = authUser?._id === message?.senderId;
+  if (!message?.chatId) {
+    console.warn("⚠️ Skipping message with missing chatId:", message);
+    return null;
+  }
 
   return (
     <Flex

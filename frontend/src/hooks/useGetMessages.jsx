@@ -28,7 +28,7 @@ const useGetMessages = () => {
         dispatch(setMessages(Array.isArray(res.data) ? res.data : []));
       } catch (err) {
         console.error("Error fetching messages:", err);
-        dispatch(setMessages([])); // Set empty messages if error occurs
+        dispatch(setMessages(Array.isArray(res.data) ? res.data : [])); // Set empty messages if error occurs
       }
     };
 

@@ -60,7 +60,7 @@ const useGetRealTimeMessages = () => {
     socket.on("newMessage", (newMessage) => {
       console.log("📩 Received new message:", newMessage);
 
-      if (!newMessage || !newMessage._id) {
+      if (!newMessage || !newMessage._id || !newMessage.chatId) {
         console.warn("⚠️ Invalid message received:", newMessage);
         return;
       }
