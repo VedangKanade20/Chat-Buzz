@@ -3,6 +3,7 @@ import { Flex, Text, Box, Image } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedUser } from "../redux/userSlice";
 
+// eslint-disable-next-line react/display-name
 const OtherUser = React.memo(({ user }) => {
   const dispatch = useDispatch();
 
@@ -11,14 +12,14 @@ const OtherUser = React.memo(({ user }) => {
     (prev, next) => prev === next
   );
 
-  console.log("Rendering User:", user?._id);
+  // console.log("Rendering User:", user?._id);
 
   const selectedUserHandler = useCallback(() => {
     if (selectedUserId !== user?._id) {
       console.log("Updating selectedUser:", user);
       dispatch(setSelectedUser(user));
     }
-  }, [dispatch, selectedUserId, user?._id]); // Only depend on user._id
+  }, [dispatch, selectedUserId, user]); // Only depend on user._id
 
   return (
     <Flex

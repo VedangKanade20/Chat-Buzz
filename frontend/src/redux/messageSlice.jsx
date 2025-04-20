@@ -12,6 +12,7 @@ const messageSlice = createSlice({
     addMessage: (state, action) => {
       if (!state.messages.some((msg) => msg._id === action.payload._id)) {
         state.messages.push(action.payload);
+        console.log(action.payload);
       }
     },
   },
