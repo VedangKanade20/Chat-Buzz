@@ -1,9 +1,7 @@
-
-
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setMessages } from "../redux/messageSlice";
+import { addMessage } from "../redux/messageSlice";
 import { Box, Input, Button } from "@chakra-ui/react";
 
 const SendInput = () => {
@@ -11,16 +9,15 @@ const SendInput = () => {
 
   const dispatch = useDispatch();
   const { selectedUser } = useSelector((store) => store.user);
-  const { messages } = useSelector((store) => store.messages);
   const token = localStorage.getItem("token");
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
-    if (!message.trim()) return; // Prevent sending empty messages
+    if (!message.trim() || !selectedUser?._id) return;
 
     try {
       const res = await axios.post(
-        `http://localhost:8070/api/chats/${selectedUser?._id}`,
+        `http://localhost:8070/api/chats/${selectedUser._id}`,
         { message },
         {
           headers: {
@@ -31,13 +28,11 @@ const SendInput = () => {
         }
       );
 
-      console.log("New Message Sent:", res.data);
-      dispatch(setMessages([...messages, res.data])); // Add new message
+      dispatch(addMessage(res.data));
+      setMessage("");
     } catch (err) {
       console.error("Error sending message:", err);
     }
-
-    setMessage(""); // Clear input field after sending
   };
 
   return (
@@ -46,6 +41,7 @@ const SendInput = () => {
       onSubmit={onSubmitHandler}
       display="flex"
       alignItems="center"
+      p={2}
     >
       <Input
         value={message}

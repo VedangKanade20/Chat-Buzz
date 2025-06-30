@@ -1,16 +1,24 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { Avatar, Text, Flex, Heading } from "@chakra-ui/react";
 import Messages from "./Messages";
 import SendInput from "./SendInput";
+import { setMessages } from "../redux/messageSlice";
+import useGetMessages from "../hooks/useGetMessages";
 
 const ChatArea = () => {
   const { selectedUser, authUser } = useSelector((store) => store.user);
-  const { messages } = useSelector((store) => store.messages);
+  const dispatch = useDispatch();
+
+  // Initialize message fetching
+  useGetMessages();
 
   useEffect(() => {
-    console.log("Messages updated:", messages);
-  }, [messages]);
+    // Clear messages when user changes
+    return () => {
+      dispatch(setMessages([]));
+    };
+  }, [selectedUser?._id, dispatch]);
 
   return (
     <>
@@ -57,7 +65,7 @@ const ChatArea = () => {
             {authUser?.username}
           </Heading>
           <Heading as="h2" size="lg" color="white" fontWeight="semibold">
-            Let's start a conversation
+            Lets start a conversation
           </Heading>
         </Flex>
       )}

@@ -8,18 +8,19 @@ const ListOfUsers = () => {
   const otherUsers = useSelector((store) => store.user.otherUsers);
   const [search, setSearch] = useState("");
 
-  useGetOtherUsers(); // Move this to a parent component if possible
-
-  if (!otherUsers || otherUsers.length === 0)
-    return <Text>No users found</Text>;
+  useGetOtherUsers(); // This must always run
 
   const filteredUsers = useMemo(
     () =>
-      otherUsers.filter((user) =>
+      otherUsers?.filter((user) =>
         user.username.toLowerCase().includes(search.toLowerCase())
-      ),
+      ) ?? [],
     [otherUsers, search]
   );
+
+  if (!otherUsers || otherUsers.length === 0) {
+    return <Text>No users found</Text>;
+  }
 
   return (
     <Flex direction="column">
