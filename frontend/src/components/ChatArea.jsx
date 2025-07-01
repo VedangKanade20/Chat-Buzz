@@ -5,6 +5,7 @@ import Messages from "./Messages";
 import SendInput from "./SendInput";
 import { setMessages } from "../redux/messageSlice";
 import useGetMessages from "../hooks/useGetMessages";
+import useGetRealTimeMessages from "../hooks/useGetRealTimeMessages";
 
 const ChatArea = () => {
   const { selectedUser, authUser } = useSelector((store) => store.user);
@@ -12,6 +13,7 @@ const ChatArea = () => {
 
   // Initialize message fetching
   useGetMessages();
+  useGetRealTimeMessages();
 
   useEffect(() => {
     // Clear messages when user changes
