@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { API_URL } from "../apiConfig";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -38,17 +39,13 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
-        `http://localhost:8070/api/users/login`,
-        user,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            // Authorization: `Bearer ${res.token}`,
-          },
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(`${API_URL}/api/users/login`, user, {
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${res.token}`,
+        },
+        withCredentials: true,
+      });
       navigate("/chat");
       dispatch(setAuthUser(res.data));
       localStorage.setItem("token", res.data.token);
@@ -69,8 +66,11 @@ const LoginPage = () => {
       justifyContent="center"
       alignItems="center"
       minH="100vh"
-      w="100vw"
+      w="full"
       p="4"
+      bgGradient="linear(to-br, gray.950, gray.900)"
+      bgSize="cover"
+      bgPos="center"
     >
       {/* Logo Section */}
       <Box mb="6">
@@ -81,10 +81,12 @@ const LoginPage = () => {
       <Flex
         w="30vw" // Smaller width for the form
         p="6"
-        bgColor="black"
+        bgColor="gray.900"
         color="white"
         borderRadius="20px"
         boxShadow="lg"
+        border="1px solid"
+        borderColor="gray.700"
         direction="column"
         alignItems="center"
       >
@@ -101,8 +103,9 @@ const LoginPage = () => {
               type="email"
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
-              bgColor="white"
-              color="black"
+              bgColor="gray.800"
+              color="white"
+              _placeholder={{ color: "gray.400" }}
               w="full"
             />
           </Box>
@@ -116,8 +119,9 @@ const LoginPage = () => {
                 type={showPassword ? "text" : "password"}
                 value={user.password}
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
+                _placeholder={{ color: "gray.400" }}
                 w="full"
               />
               <InputRightElement width="4.5rem">

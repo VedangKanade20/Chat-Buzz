@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../redux/messageSlice";
 import { io } from "socket.io-client";
+import { API_URL } from "../apiConfig";
 
 const useGetRealTimeMessages = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const useGetRealTimeMessages = () => {
   useEffect(() => {
     if (!authUser?._id || !token) return;
 
-    const socket = io("http://localhost:8070", {
+    const socket = io(API_URL, {
       auth: {
         token: token, // Send JWT token for authentication
       },

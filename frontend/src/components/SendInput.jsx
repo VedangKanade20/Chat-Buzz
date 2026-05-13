@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../redux/messageSlice";
+import { API_URL } from "../apiConfig";
 import { Box, Input, Button } from "@chakra-ui/react";
 
 const SendInput = () => {
@@ -17,7 +18,7 @@ const SendInput = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:8070/api/chats/${selectedUser._id}`,
+        `${API_URL}/api/chats/${selectedUser._id}`,
         { message },
         {
           headers: {
@@ -25,7 +26,7 @@ const SendInput = () => {
             Authorization: `Bearer ${token}`,
           },
           withCredentials: true,
-        }
+        },
       );
 
       dispatch(addMessage(res.data));

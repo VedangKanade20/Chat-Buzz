@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setOtherUsers } from "../redux/userSlice";
+import { API_URL } from "../apiConfig";
 
 const useGetOtherUsers = () => {
   const dispatch = useDispatch();
@@ -11,15 +12,12 @@ const useGetOtherUsers = () => {
       try {
         // Retrieve the token from localStorage
         const token = localStorage.getItem("token");
-        const res = await axios.get(
-          `http://localhost:8070/api/users/usersList/`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`, // Ensure token is sent in the correct format
-            },
-            withCredentials: true, // Include credentials like cookies, if needed
-          }
-        );
+        const res = await axios.get(`${API_URL}/api/users/usersList/`, {
+          headers: {
+            Authorization: `Bearer ${token}`, // Ensure token is sent in the correct format
+          },
+          withCredentials: true, // Include credentials like cookies, if needed
+        });
 
         // Store the data in Redux
         console.log("Other users->", res.data);
@@ -27,7 +25,7 @@ const useGetOtherUsers = () => {
       } catch (err) {
         console.log(
           "Error fetching other users:",
-          err.response ? err.response.data : err.message
+          err.response ? err.response.data : err.message,
         );
       }
     };

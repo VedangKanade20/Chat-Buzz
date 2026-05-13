@@ -1,91 +1,44 @@
-// import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import { Flex } from "@chakra-ui/react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { useEffect } from "react";
-// import io from "socket.io-client";
-// import LoginPage from "./Pages/LoginPage";
-// import ChatPage from "./Pages/ChatPage";
-// import WelcomePage from "./Pages/Welcome";
-// import RegisterPage from "./Pages/RegisterPage";
-// import { setOtherUsers } from "./redux/userSlice";
-// import { setSocket } from "./redux/socketSlice";
-// import "./App.css";
-
-// // Define the router configuration
-// const router = createBrowserRouter([
-//   { path: "/", element: <WelcomePage /> },
-//   { path: "/signup", element: <RegisterPage /> },
-//   { path: "/login", element: <LoginPage /> },
-//   { path: "/chat", element: <ChatPage /> },
-// ]);
-
-// function App() {
-//   const dispatch = useDispatch();
-//   const { authUser } = useSelector((store) => store.user);
-//   const { socket } = useSelector((store) => store.socket);
-
-//   useEffect(() => {
-//     // let socketio;
-
-//     if (authUser) {
-//       const socketio = io("http://localhost:8070", {
-//         query: {
-//           userId: authUser._id, // Pass userId when connected
-//         },
-//         transports: ["polling"], // Prefer WebSocket over polling
-//       });
-
-//       // Dispatch the socket object to the Redux store
-//       dispatch(setSocket(socketio));
-
-//       // Listen for other users from the socket
-//       socketio?.on("setOtherUsers", (otherUsers) => {
-//         dispatch(setOtherUsers(otherUsers));
-//         console.log("New client connected:", socket.id);
-//       });
-
-//       return () => socketio.close();
-//     } else {
-//       if (socket) {
-//         socket.close(); // Properly close the socket connection
-//         dispatch(setSocket(null)); // Reset socket in the store
-//         console.log("Client disconnected:", socket.id);
-//       }
-//     }
-//   }, [authUser, dispatch]);
-
-//   return (
-//     <Flex
-//       justifyContent="center"
-//       alignItems="center"
-//       className="flex-container"
-//     >
-//       <RouterProvider router={router} />
-//     </Flex>
-//   );
-// }
-
-// export default App;
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Flex } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import LoginPage from "./Pages/LoginPage";
-import ChatPage from "./Pages/ChatPage";
+import { useEffect, lazy, Suspense } from "react";
 import WelcomePage from "./Pages/Welcome";
-import RegisterPage from "./Pages/RegisterPage";
 import { setOtherUsers } from "./redux/userSlice";
 import { setSocketId, setSocketConnected } from "./redux/socketSlice";
 import socket from "./socket"; // Import the singleton socket instance
 import "./App.css";
 
+const RegisterPage = lazy(() => import("./Pages/RegisterPage"));
+const ChatPage = lazy(() => import("./Pages/ChatPage"));
+const LazyLoginPage = lazy(() => import("./Pages/LoginPage"));
+
+const ErrorPage = () => (
+  <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
+    <div className="mx-auto max-w-3xl rounded-[2rem] border border-white/10 bg-slate-900/90 p-10 shadow-2xl shadow-cyan-500/10">
+      <h1 className="text-4xl font-bold text-white">404 Not Found</h1>
+      <p className="mt-4 text-cyan-100/80">
+        The page you’re looking for doesn’t exist. Use the navigation to return
+        home or try again.
+      </p>
+      <div className="mt-8">
+        <a
+          href="/"
+          className="inline-flex rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-black transition hover:bg-cyan-300"
+        >
+          Go back home
+        </a>
+      </div>
+    </div>
+  </main>
+);
+
 // Define the router configuration
 const router = createBrowserRouter([
   { path: "/", element: <WelcomePage /> },
-  { path: "/signup", element: <RegisterPage /> },
-  { path: "/login", element: <LoginPage /> },
+  // { path: "/signup", element: <RegisterPage /> },
+  { path: "/register", element: <RegisterPage /> },
+  { path: "/login", element: <LazyLoginPage /> },
   { path: "/chat", element: <ChatPage /> },
+  { path: "*", element: <ErrorPage /> },
 ]);
 
 function App() {
@@ -119,13 +72,13 @@ function App() {
   }, [authUser, dispatch]);
 
   return (
-    <Flex
-      justifyContent="center"
-      alignItems="center"
-      className="flex-container"
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-950 text-white">Loading…</div>
+      }
     >
       <RouterProvider router={router} />
-    </Flex>
+    </Suspense>
   );
 }
 

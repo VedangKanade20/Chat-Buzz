@@ -1,6 +1,7 @@
 import io from "socket.io-client";
+import { API_URL } from "./apiConfig";
 
-const socket = io("http://localhost:8070", {
+const socket = io(API_URL, {
   transports: ["websocket", "polling"], // WebSocket preferred, fallback to polling
   withCredentials: true,
 });

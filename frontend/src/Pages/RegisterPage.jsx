@@ -10,6 +10,7 @@ import {
   Checkbox,
   Button,
 } from "@chakra-ui/react";
+import { API_URL } from "../apiConfig";
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const RegisterPage = () => {
         formData.append(key, user[key]);
       });
       const res = await axios.post(
-        `http://localhost:8070/api/users/register`,
+        `${API_URL}/api/users/register`,
         user,
         formData,
         {
@@ -49,7 +50,7 @@ const RegisterPage = () => {
             "Content-Type": "application/json",
           },
           withCredentials: true,
-        }
+        },
       );
 
       navigate("/login");
@@ -78,8 +79,11 @@ const RegisterPage = () => {
         justifyContent="center"
         alignItems="center"
         minH="100vh"
-        w="100vw"
+        w="full"
         p="4"
+        bgGradient="linear(to-br, gray.950, gray.900)"
+        bgSize="cover"
+        bgPos="center"
       >
         {/* Logo Section */}
         <Box mb="6">
@@ -89,10 +93,12 @@ const RegisterPage = () => {
         <Flex
           w="30vw" // Smaller width for the form
           p="6"
-          bgColor="black"
+          bgColor="gray.900"
           color="white"
           borderRadius="20px"
           boxShadow="lg"
+          border="1px solid"
+          borderColor="gray.700"
           direction="column"
           alignItems="center"
         >
@@ -112,8 +118,9 @@ const RegisterPage = () => {
                 onChange={(e) =>
                   setUser({ ...user, firstName: e.target.value })
                 }
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
+                _placeholder={{ color: "gray.500" }}
                 w="full"
               />
             </Flex>
@@ -124,8 +131,9 @@ const RegisterPage = () => {
                 type="namee"
                 value={user.lastName}
                 onChange={(e) => setUser({ ...user, lastName: e.target.value })}
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
+                _placeholder={{ color: "gray.500" }}
                 w="full"
               />
             </Flex>
@@ -141,8 +149,9 @@ const RegisterPage = () => {
                 type="username"
                 value={user.username}
                 onChange={(e) => setUser({ ...user, username: e.target.value })}
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
+                _placeholder={{ color: "gray.500" }}
                 w="full"
               />
             </Flex>
@@ -153,8 +162,9 @@ const RegisterPage = () => {
                 type="email"
                 value={user.email}
                 onChange={(e) => setUser({ ...user, email: e.target.value })}
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
+                _placeholder={{ color: "gray.500" }}
                 w="full"
               />
             </Flex>
@@ -170,8 +180,9 @@ const RegisterPage = () => {
                 type="password"
                 value={user.password}
                 onChange={(e) => setUser({ ...user, password: e.target.value })}
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
+                _placeholder={{ color: "gray.500" }}
                 w="full"
               />
             </Flex>
@@ -184,8 +195,9 @@ const RegisterPage = () => {
                 onChange={(e) =>
                   setUser({ ...user, confirmPassword: e.target.value })
                 }
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
+                _placeholder={{ color: "gray.500" }}
                 w="full"
               />
             </Flex>
@@ -222,8 +234,8 @@ const RegisterPage = () => {
                 type="file"
                 accept="image/*"
                 onChange={handleImageUpload}
-                bgColor="white"
-                color="black"
+                bgColor="gray.800"
+                color="white"
               />
             </Flex>
 
